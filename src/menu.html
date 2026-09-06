@@ -1,0 +1,472 @@
+<title>אלגריה · תפריט ראש השנה</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Assistant:wght@400;500;600;700&display=swap">
+
+<style>
+/* ============================================================
+   מסעדת אלגריה — תפריט ראש השנה
+   פלטה, טיפוגרפיה ומוטיבים נגזרים ממדריך המותג הרשמי.
+   ============================================================ */
+:root{
+  color-scheme: light;
+
+  /* --- צבעי המותג (מתוך הגיידליינז) --- */
+  --ink:       #333333;
+  --cream:     #F2EADE;
+  --orange:    #F5871F;
+  --gold:      #FCC50D;
+
+  /* --- גוונים נגזרים --- */
+  --paper:     #FCF8F2;  /* קרם מוגבה — רקע הפאנלים */
+  --ink-deep:  #24211E;  /* פחם עמוק — הסביבה מסביב לגיליון */
+  --ink-soft:  #6E6357;  /* חום-אפור חם לטקסט משני */
+  --rule:      #D9CBB6;  /* קו שיער */
+
+  --font-display: 'Rubik', 'Fb IguanaNew', 'Heebo', system-ui, sans-serif;
+  --font-body:    'Assistant', 'Fb IguanaNew', 'Heebo', system-ui, sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background:var(--ink-deep);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+.stage{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:calc(var(--s,3.8px) * 6);
+  padding:calc(var(--s,3.8px) * 7) calc(var(--s,3.8px) * 4);
+  --s:3.8px;
+}
+
+/* ---------- הגיליון ---------- */
+.sheet-wrap{
+  container-type:inline-size;
+  width:min(100%, 210mm);
+}
+
+.sheet{
+  --s:0.47619cqw;              /* 1 יחידה = 1 מ"מ ברוחב A4 */
+  width:100%;
+  height:297mm;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--font-body);
+  box-shadow:0 calc(var(--s)*2) calc(var(--s)*10) rgba(0,0,0,.45);
+}
+
+/* ---------- כותרת עליונה ---------- */
+.masthead{
+  background:var(--ink);
+  padding:calc(var(--s)*12) calc(var(--s)*13) calc(var(--s)*10);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:calc(var(--s)*8);
+}
+
+.masthead__text{ min-width:0; }
+
+.eyebrow{
+  display:flex;
+  align-items:center;
+  gap:calc(var(--s)*2.4);
+  color:var(--gold);
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:calc(var(--s)*3.9);
+  letter-spacing:.16em;
+  margin:0 0 calc(var(--s)*3.2);
+}
+.pomegranate{
+  width:calc(var(--s)*6.6);
+  height:calc(var(--s)*7.4);
+  flex:none;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.title{
+  margin:0;
+  font-family:var(--font-display);
+  font-weight:900;
+  font-size:calc(var(--s)*20);
+  line-height:.94;
+  letter-spacing:-.015em;
+  color:var(--cream);
+  text-wrap:balance;
+}
+.title span{ display:block; }
+.title span:last-child{ color:var(--gold); }
+
+.logo{
+  width:calc(var(--s)*52);
+  height:auto;
+  flex:none;
+}
+
+/* פס המותג — נלקח מתחתית דפי הגיידליינז */
+.brandbar{
+  height:calc(var(--s)*2.4);
+  flex:none;
+  background:linear-gradient(90deg, var(--gold) 0%, var(--orange) 100%);
+}
+
+/* ---------- אזור הקטגוריות ---------- */
+.courses{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:calc(var(--s)*7);
+  padding:calc(var(--s)*9) calc(var(--s)*11) calc(var(--s)*7);
+}
+
+.courses__row{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:calc(var(--s)*6);
+}
+.span-2{ grid-column:span 2; }
+.span-3{ grid-column:span 3; }
+
+/* ---------- קטגוריה ---------- */
+.course{
+  position:relative;
+  padding-top:calc(var(--s)*4.8);
+  display:flex;
+}
+
+/* הטאב — גרסה מוקטנת של פלאק הלוגו */
+.course__tab{
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:2;
+  background:var(--ink);
+  border-radius:calc(var(--s)*5) calc(var(--s)*5) calc(var(--s)*1.2) calc(var(--s)*1.2);
+  padding:calc(var(--s)*2.3) calc(var(--s)*7) calc(var(--s)*1.9);
+  margin:0;
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:calc(var(--s)*5);
+  line-height:1;
+  letter-spacing:.05em;
+  color:var(--cream);
+  white-space:nowrap;
+}
+/* קו הפנים של הפלאק — כמו בלוגו */
+.course__tab::after{
+  content:"";
+  position:absolute;
+  inset:calc(var(--s)*1);
+  border:1px solid rgba(252,197,13,.5);
+  border-radius:calc(var(--s)*4.1) calc(var(--s)*4.1) calc(var(--s)*.5) calc(var(--s)*.5);
+  pointer-events:none;
+}
+
+.course__panel{
+  flex:1;
+  background:var(--paper);
+  border:1px solid var(--rule);
+  border-radius:calc(var(--s)*1.5);
+  padding:calc(var(--s)*8) calc(var(--s)*6) calc(var(--s)*5.5);
+}
+
+/* ---------- פריטים ---------- */
+.items{
+  margin:0;
+  padding:0;
+  list-style:none;
+  column-gap:calc(var(--s)*6);
+  column-fill:balance;
+}
+.items--3{ column-count:3; }
+.items--2{ column-count:2; }
+.items--1{ column-count:1; }
+
+.items li{
+  break-inside:avoid;
+  display:flex;
+  align-items:baseline;
+  gap:calc(var(--s)*2.2);
+  padding-block:calc(var(--s)*1.3);
+  font-size:calc(var(--s)*3.5);
+  font-weight:500;
+  line-height:1.2;
+  color:var(--ink);
+}
+.items li::before{
+  content:"";
+  flex:none;
+  width:calc(var(--s)*1.5);
+  height:calc(var(--s)*1.5);
+  background:var(--orange);
+  transform:rotate(45deg);
+  translate:0 calc(var(--s)*-.5);
+}
+
+/* ---------- תחתית ---------- */
+.footer{ flex:none; }
+
+.footer__main{
+  background:var(--ink);
+  padding:calc(var(--s)*7) calc(var(--s)*13) calc(var(--s)*6.5);
+  text-align:center;
+}
+.footer__label{
+  margin:0 0 calc(var(--s)*1.5);
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:calc(var(--s)*3.4);
+  letter-spacing:.16em;
+  color:var(--orange);
+}
+.phone{
+  display:inline-block;
+  font-family:var(--font-display);
+  font-weight:900;
+  font-size:calc(var(--s)*12);
+  line-height:1;
+  letter-spacing:.01em;
+  font-variant-numeric:tabular-nums;
+  color:var(--gold);
+  text-decoration:none;
+  direction:ltr;
+}
+.phone:focus-visible{
+  outline:2px solid var(--cream);
+  outline-offset:calc(var(--s)*1.5);
+  border-radius:calc(var(--s)*1);
+}
+.contact-name{
+  margin:calc(var(--s)*2.4) 0 0;
+  font-size:calc(var(--s)*3.9);
+  font-weight:600;
+  color:var(--cream);
+}
+
+.footer__meta{
+  background:var(--ink-deep);
+  border-top:1px solid rgba(242,234,222,.14);
+  padding:calc(var(--s)*4) calc(var(--s)*13);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:calc(var(--s)*6);
+  font-size:calc(var(--s)*3.3);
+  color:var(--cream);
+}
+.footer__meta b{
+  font-weight:600;
+  color:var(--gold);
+  letter-spacing:.1em;
+  font-family:var(--font-display);
+  font-size:calc(var(--s)*2.9);
+}
+.footer__meta span{ display:inline-block; }
+.ltr{ direction:ltr; unicode-bidi:isolate; font-variant-numeric:tabular-nums; }
+
+/* ---------- פעולות (מסך בלבד) ---------- */
+.actions{
+  display:flex;
+  gap:calc(var(--s)*3);
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.btn{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:15px;
+  padding:11px 22px;
+  border-radius:999px;
+  border:1px solid var(--gold);
+  background:transparent;
+  color:var(--gold);
+  cursor:pointer;
+  transition:background .15s ease, color .15s ease;
+}
+.btn:hover{ background:var(--gold); color:var(--ink-deep); }
+.btn:focus-visible{ outline:2px solid var(--cream); outline-offset:3px; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition:none !important; animation:none !important; }
+}
+
+/* ---------- מובייל ---------- */
+@media screen and (max-width: 760px){
+  .sheet{ --s:4.3px; height:auto; }
+  .stage{ padding:16px 10px 28px; gap:18px; }
+  .courses__row{ grid-template-columns:1fr; }
+  .span-2, .span-3{ grid-column:auto; }
+  .items--3{ column-count:2; }
+}
+@media screen and (max-width: 420px){
+  .masthead{ flex-direction:column-reverse; text-align:center; align-items:center; }
+  .eyebrow{ justify-content:center; }
+  .items--3, .items--2{ column-count:1; }
+}
+
+/* ---------- הדפסה ---------- */
+@page{ size:A4 portrait; margin:0; }
+@media print{
+  body{ background:#fff; }
+  .stage{ padding:0; gap:0; min-height:0; }
+  .actions{ display:none; }
+  .sheet-wrap{ width:210mm; }
+  .sheet{ --s:1mm; box-shadow:none; height:297mm; }
+  .sheet, .masthead, .course__tab, .footer__main, .footer__meta, .brandbar, .course__panel{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+}
+</style>
+
+<div class="stage">
+  <div class="sheet-wrap">
+    <div class="sheet" lang="he" dir="rtl">
+
+      <header class="masthead">
+        <div class="masthead__text">
+          <p class="eyebrow">
+            <svg class="pomegranate" viewBox="0 0 40 46" aria-hidden="true">
+              <path d="M20 13.5c-8.6 0-14.2 6.2-14.2 14.6C5.8 36.9 12.2 44 20 44s14.2-7.1 14.2-15.9c0-8.4-5.6-14.6-14.2-14.6Z"/>
+              <path d="M20 13.5V5"/>
+              <path d="m20 7.4-5.2-4.1M20 7.4l5.2-4.1M20 9.6 12.2 7.1M20 9.6l7.8-2.5"/>
+            </svg>
+            מסעדת אלגריה
+          </p>
+          <h1 class="title"><span>תפריט</span><span>ראש השנה</span></h1>
+        </div>
+        <img class="logo" src="assets/alegria-logo-web.png" alt="מסעדת אלגריה — אוכל ביתי טעים, טרי ואיכותי">
+      </header>
+
+      <div class="brandbar" aria-hidden="true"></div>
+
+      <main class="courses">
+
+        <div class="courses__row">
+          <section class="course span-3">
+            <h2 class="course__tab">בשרים</h2>
+            <div class="course__panel">
+              <ul class="items items--3">
+                <li>צלי בקר</li>
+                <li>לשון</li>
+                <li>לחי עגל</li>
+                <li>אסאדו</li>
+                <li>קובה סלק</li>
+                <li>מעורב</li>
+                <li>קציצות</li>
+                <li>פרגית</li>
+                <li>חזה עוף</li>
+                <li>ממולאים (כרוב, פלפל וכו׳)</li>
+                <li>מוסקה (בטטה ותפו״א)</li>
+                <li>מפרום (תפו״א ובטטה)</li>
+                <li>שניצל</li>
+                <li>בשר ראש</li>
+                <li>מוקפץ עוף סיני</li>
+                <li>חזה עוף ממולא בבשר</li>
+                <li>טורטיית בשר</li>
+                <li>מוח</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <div class="courses__row">
+          <section class="course span-2">
+            <h2 class="course__tab">תוספות</h2>
+            <div class="course__panel">
+              <ul class="items items--2">
+                <li>אורז לבן</li>
+                <li>אורז צהוב</li>
+                <li>לנטרייה</li>
+                <li>זיתים מבושלים</li>
+                <li>תפוח אדמה</li>
+                <li>פשטידה</li>
+                <li>ארטישוק ופטריות</li>
+                <li>ספגטי מוקפץ</li>
+                <li>קוסקוס</li>
+                <li>טנזייה</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="course">
+            <h2 class="course__tab">דגים</h2>
+            <div class="course__panel">
+              <ul class="items items--1">
+                <li>דג מטוגן</li>
+                <li>קציצות דגים</li>
+                <li>ביצי דג</li>
+                <li>סלמון</li>
+                <li>טונה</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <div class="courses__row">
+          <section class="course span-3">
+            <h2 class="course__tab">סלטים</h2>
+            <div class="course__panel">
+              <ul class="items items--3">
+                <li>מטבוחה</li>
+                <li>סלק אדום</li>
+                <li>סלט ביצים</li>
+                <li>תפוח אדמה במיונז</li>
+                <li>חציל במיונז</li>
+                <li>תירס במיונז</li>
+                <li>פלפל חריף</li>
+                <li>פלפל מתוק</li>
+                <li>חציל מזרחי</li>
+                <li>כרוב סגול</li>
+                <li>כרוב לבן</li>
+                <li>חמוצי הבית</li>
+                <li>זעלוק</li>
+                <li>תירס פיקנטי</li>
+                <li>גזר חריף מרוקאי</li>
+                <li>גזר מגורד</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+        <div class="brandbar" aria-hidden="true"></div>
+        <div class="footer__main">
+          <p class="footer__label">להזמנות ובירורים</p>
+          <a class="phone" href="tel:+972545437528">054-543-7528</a>
+          <p class="contact-name">אושרית בן שושן</p>
+        </div>
+        <div class="footer__meta">
+          <span><b>כתובת</b> &nbsp;רחוב הזית 118, קרית גת</span>
+          <span><b>שעות פתיחה</b> &nbsp;<span class="ltr">7:00–15:00</span></span>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn" type="button" onclick="window.print()">הדפסה / שמירה כ‑PDF</button>
+  </div>
+</div>

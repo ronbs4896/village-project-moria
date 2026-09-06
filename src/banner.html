@@ -1,0 +1,189 @@
+<title>אלגריה · באנר המכירה הגדולה</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Assistant:wght@400;500;600;700&display=swap">
+
+<style id="birzia-faces">
+@font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Light.woff2") format("woff2");   font-weight:300;     font-style:normal; font-display:swap; }
+@font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Regular.woff2") format("woff2"); font-weight:400;     font-style:normal; font-display:swap; }
+@font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Medium.woff2") format("woff2");  font-weight:500;     font-style:normal; font-display:swap; }
+@font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Bold.woff2") format("woff2");    font-weight:600 700; font-style:normal; font-display:swap; }
+@font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Black.woff2") format("woff2");   font-weight:800 900; font-style:normal; font-display:swap; }
+</style>
+
+<style>
+:root{
+  color-scheme: light;
+  --ink:#333333; --cream:#F2EADE; --orange:#F5871F; --gold:#FCC50D;
+  --paper:#FFFCF7; --ink-deep:#232019; --rule:#DCCFB8;
+  --font-display:'Birzia','Fb IguanaNew','Rubik','Heebo',system-ui,sans-serif;
+  --font-body:'Birzia','Fb IguanaNew','Assistant','Heebo',system-ui,sans-serif;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+body{ margin:0; background:var(--ink-deep); font-family:var(--font-body); -webkit-font-smoothing:antialiased; }
+
+.stage{ display:flex; flex-direction:column; align-items:center; gap:20px; padding:24px 12px 36px; }
+
+.frame{ container-type:inline-size; width:min(100%, 540px); }
+.banner{
+  --s:calc(100cqw / 1080);        /* יחידה אחת = פיקסל אחד בקנה מידה של 1080 */
+  width:100%;
+  aspect-ratio:1080 / 1350;       /* 4:5 — פיד מטא */
+  display:flex; flex-direction:column;
+  background:var(--cream); color:var(--ink);
+  overflow:hidden;
+}
+
+/* ── פס עליון ── */
+.top{
+  flex:none;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:calc(var(--s)*24);
+  background:var(--ink);
+  padding:calc(var(--s)*15) calc(var(--s)*44);
+}
+.top img{ width:calc(var(--s)*112); height:auto; flex:none; }
+.top__txt{ text-align:right; }
+.top__name{
+  margin:0; font-family:var(--font-display); font-weight:800;
+  font-size:calc(var(--s)*40); line-height:1.1; color:var(--cream); letter-spacing:.01em;
+}
+.top__sub{
+  margin:calc(var(--s)*4) 0 0; font-family:var(--font-display); font-weight:600;
+  font-size:calc(var(--s)*25); line-height:1.2; color:var(--gold); letter-spacing:.1em;
+}
+
+/* ── בלוק המכירה ── */
+.hero{
+  flex:none; background:var(--gold); text-align:center;
+  padding:calc(var(--s)*18) calc(var(--s)*40) calc(var(--s)*20);
+}
+.hero__eyebrow{
+  margin:0; font-family:var(--font-display); font-weight:700;
+  font-size:calc(var(--s)*36); line-height:1; letter-spacing:.22em; color:var(--ink);
+}
+.hero__title{
+  margin:calc(var(--s)*10) 0 0; font-family:var(--font-display); font-weight:900;
+  font-size:calc(var(--s)*96); line-height:.98; letter-spacing:-.025em; color:var(--ink);
+}
+.hero__when{
+  display:inline-flex; align-items:center; gap:calc(var(--s)*20);
+  margin:calc(var(--s)*16) 0 0;
+  padding:calc(var(--s)*11) calc(var(--s)*30);
+  border-radius:999px; background:var(--ink); color:var(--cream);
+  font-family:var(--font-display); font-weight:700; font-size:calc(var(--s)*30); line-height:1.25;
+}
+.hero__when b{ color:var(--gold); }
+.hero__when i{ width:1px; align-self:stretch; background:rgba(242,234,222,.35); }
+.ltr{ direction:ltr; unicode-bidi:isolate; font-variant-numeric:tabular-nums; }
+
+/* ── המוצרים ── */
+.goods{
+  flex:1; min-height:0;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:calc(var(--s)*16);
+  padding:calc(var(--s)*22) calc(var(--s)*30);
+}
+.cat{
+  background:var(--paper); border:1px solid var(--rule); border-radius:calc(var(--s)*14);
+  padding:calc(var(--s)*14) calc(var(--s)*18) calc(var(--s)*14);
+  min-height:0;
+}
+.cat__h{
+  margin:0 0 calc(var(--s)*10);
+  padding-bottom:calc(var(--s)*8);
+  border-bottom:calc(var(--s)*3) solid var(--orange);
+  font-family:var(--font-display); font-weight:800;
+  font-size:calc(var(--s)*34); line-height:1; color:var(--ink);
+}
+.cat ul{
+  margin:0; padding:0; list-style:none;
+  column-gap:calc(var(--s)*16);
+}
+.cat--2 ul{ column-count:2; }
+.cat li{
+  break-inside:avoid;
+  font-size:calc(var(--s)*21); font-weight:600; line-height:1.26;
+  padding-block:calc(var(--s)*1.5);
+  color:var(--ink);
+}
+
+/* ── קריאה לפעולה ── */
+.cta{
+  flex:none; background:var(--ink); text-align:center;
+  padding:calc(var(--s)*13) calc(var(--s)*40) calc(var(--s)*16);
+}
+.cta__label{
+  margin:0; font-family:var(--font-display); font-weight:700;
+  font-size:calc(var(--s)*28); letter-spacing:.16em; color:var(--cream);
+}
+.cta__phone{
+  display:flex; align-items:center; justify-content:center; gap:calc(var(--s)*16);
+  margin:calc(var(--s)*8) 0 0; color:var(--gold);
+}
+.cta__phone svg{ width:calc(var(--s)*54); height:calc(var(--s)*54); fill:currentColor; flex:none; }
+.cta__phone a{
+  font-family:var(--font-display); font-weight:900; font-size:calc(var(--s)*76);
+  line-height:1; letter-spacing:.01em; color:var(--gold); text-decoration:none;
+  direction:ltr; font-variant-numeric:tabular-nums;
+}
+.cta__addr{
+  margin:calc(var(--s)*8) 0 0; font-size:calc(var(--s)*25); font-weight:600; color:var(--cream);
+}
+</style>
+
+<div class="stage">
+  <div class="frame">
+    <div class="banner" lang="he" dir="rtl">
+
+      <header class="top">
+        <div class="top__txt">
+          <p class="top__name">מסעדת אלגריה</p>
+          <p class="top__sub">אוכל ביתי טעים, טרי ואיכותי</p>
+        </div>
+        <img src="assets/alegria-logo-web.png" alt="מסעדת אלגריה">
+      </header>
+
+      <section class="hero">
+        <p class="hero__eyebrow">לראש השנה</p>
+        <h1 class="hero__title">המכירה הגדולה</h1>
+        <!-- ══ תאריכי המכירה — לעדכון כאן בלבד ══ -->
+        <p class="hero__when">
+          <span><b class="ltr">6–11</b> בספטמבר · עד ערב החג</span>
+          <i aria-hidden="true"></i>
+          <span>כל יום <b class="ltr">7:00–15:00</b></span>
+        </p>
+      </section>
+
+      <main class="goods">
+        <section class="cat cat--2">
+          <h2 class="cat__h">בשרים</h2>
+          <ul><li>צלי בקר</li><li>לשון</li><li>לחי עגל</li><li>אסאדו</li><li>קובה סלק</li><li>מעורב</li><li>קציצות</li><li>פרגית</li><li>חזה עוף</li><li>ממולאים</li><li>מוסקה</li><li>מפרום</li><li>שניצל</li><li>בשר ראש</li><li>מוקפץ עוף סיני</li><li>חזה עוף ממולא</li><li>טורטיית בשר</li><li>מוח</li></ul>
+        </section>
+        <section class="cat cat--2">
+          <h2 class="cat__h">תוספות</h2>
+          <ul><li>אורז לבן</li><li>אורז צהוב</li><li>לנטרייה</li><li>זיתים מבושלים</li><li>תפוח אדמה</li><li>פשטידה</li><li>ארטישוק ופטריות</li><li>ספגטי מוקפץ</li><li>קוסקוס</li><li>טנזייה</li></ul>
+        </section>
+        <section class="cat cat--2">
+          <h2 class="cat__h">סלטים</h2>
+          <ul><li>מטבוחה</li><li>סלק אדום</li><li>סלט ביצים</li><li>תפוח אדמה במיונז</li><li>חציל במיונז</li><li>תירס במיונז</li><li>פלפל חריף</li><li>פלפל מתוק</li><li>חציל מזרחי</li><li>כרוב סגול</li><li>כרוב לבן</li><li>חמוצי הבית</li><li>זעלוק</li><li>תירס פיקנטי</li><li>גזר חריף מרוקאי</li><li>גזר מגורד</li></ul>
+        </section>
+        <section class="cat">
+          <h2 class="cat__h">דגים</h2>
+          <ul><li>דג מטוגן</li><li>קציצות דגים</li><li>ביצי דג</li><li>סלמון</li><li>טונה</li></ul>
+        </section>
+      </main>
+
+      <footer class="cta">
+        <p class="cta__label">להזמנות ובירורים</p>
+        <p class="cta__phone">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
+          <a href="tel:+972545437528">054-543-7528</a>
+        </p>
+        <p class="cta__addr">רחוב הזית 118, קרית גת</p>
+      </footer>
+
+    </div>
+  </div>
+</div>

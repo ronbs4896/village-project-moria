@@ -21,6 +21,7 @@
   --wine:#8C1A1C; --wine-hi:#A62628; --wine-lo:#6A1011;
   /* זהב מטאלי */
   --g-hi:#FBEFC0; --g-mid:#D9B45A; --g-deep:#A8801C;
+  --gold-metal:linear-gradient(180deg,#FDF5D6 0%,#EBD285 16%,#C9A227 40%,#8C6910 56%,#D8B85C 76%,#F7E9B4 100%);
   /* מותג */
   --orange:#F5871F; --brand-gold:#FCC50D;
   --ink:#4A3016;
@@ -72,8 +73,14 @@ body{ margin:0; background:#1B1410; font-family:var(--font-body); -webkit-font-s
   .title{
     background-image:linear-gradient(180deg,#FDF6D8 0%,#EBCC72 26%,#C39527 50%,#F6E6A8 66%,#A87C16 100%);
     -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-    filter:drop-shadow(0 calc(var(--s)*2) 0 rgba(106,16,17,.85));
+    filter:drop-shadow(calc(var(--s)*1.1) 0 0 #6A1011) drop-shadow(calc(var(--s)*-1.4) 0 0 #6A1011)
+           drop-shadow(0 calc(var(--s)*1.1) 0 #6A1011) drop-shadow(0 calc(var(--s)*-1.4) 0 #6A1011)
+           drop-shadow(0 calc(var(--s)*6) calc(var(--s)*8) rgba(74,26,8,.4));
   }
+}
+.flourish{
+  display:block; width:100%; height:calc(var(--s)*26);
+  margin:calc(var(--s)*8) 0 0;
 }
 .tagline{
   margin:calc(var(--s)*10) 0 0;
@@ -84,13 +91,15 @@ body{ margin:0; background:#1B1410; font-family:var(--font-body); -webkit-font-s
 /* ── סרט המכירה ── */
 .sale{
   flex:none;
+  filter:drop-shadow(0 calc(var(--s)*5) calc(var(--s)*10) rgba(74,26,8,.32));
   margin:calc(var(--s)*18) calc(var(--s)*42) 0;
   padding:calc(var(--s)*3);
-  background:linear-gradient(180deg,var(--g-hi),var(--g-mid) 45%,var(--g-deep));
+  background:var(--gold-metal);
   clip-path:polygon(0 50%, calc(var(--s)*22) 0, calc(100% - var(--s)*22) 0, 100% 50%, calc(100% - var(--s)*22) 100%, calc(var(--s)*22) 100%);
 }
 .sale__in{
-  background:linear-gradient(180deg,var(--wine-hi),var(--wine) 45%,var(--wine-lo));
+  background:linear-gradient(180deg,#B93033 0%,var(--wine-hi) 14%,var(--wine) 48%,var(--wine-lo) 88%,#4E0A0A 100%);
+  box-shadow:inset 0 calc(var(--s)*2) 0 rgba(255,220,170,.28), inset 0 calc(var(--s)*-2) 0 rgba(0,0,0,.3);
   clip-path:polygon(0 50%, calc(var(--s)*21) 0, calc(100% - var(--s)*21) 0, 100% 50%, calc(100% - var(--s)*21) 100%, calc(var(--s)*21) 100%);
   padding:calc(var(--s)*13) calc(var(--s)*40) calc(var(--s)*15);
   text-align:center; color:var(--g-hi);
@@ -112,7 +121,8 @@ body{ margin:0; background:#1B1410; font-family:var(--font-body); -webkit-font-s
   display:grid; grid-template-columns:1fr 1fr;
   gap:calc(var(--s)*30) calc(var(--s)*22);
   grid-template-rows:auto auto;
-  align-content:space-between;
+  align-content:center;
+  row-gap:calc(var(--s)*34);
   padding:calc(var(--s)*40) calc(var(--s)*42) calc(var(--s)*16);
 }
 .cat{ position:relative; padding-top:calc(var(--s)*22); min-height:0; }
@@ -122,17 +132,20 @@ body{ margin:0; background:#1B1410; font-family:var(--font-body); -webkit-font-s
   border:calc(var(--s)*2) solid var(--g-mid);
   border-radius:calc(var(--s)*18);
   padding:calc(var(--s)*34) calc(var(--s)*20) calc(var(--s)*16);
-  box-shadow:inset 0 0 0 calc(var(--s)*1.5) rgba(168,128,22,.28);
+  box-shadow:inset 0 0 0 calc(var(--s)*1.5) rgba(168,128,22,.3),
+             0 calc(var(--s)*7) calc(var(--s)*20) rgba(74,26,8,.15);
 }
 .cat__h{
-  position:absolute; top:0; left:50%; transform:translateX(-50%); z-index:2;
+  position:absolute;
+  filter:drop-shadow(0 calc(var(--s)*3) calc(var(--s)*6) rgba(74,26,8,.34)); top:0; left:50%; transform:translateX(-50%); z-index:2;
   margin:0; padding:calc(var(--s)*2.5);
-  background:linear-gradient(180deg,var(--g-hi),var(--g-mid) 45%,var(--g-deep));
+  background:var(--gold-metal);
   clip-path:polygon(0 50%, calc(var(--s)*16) 0, calc(100% - var(--s)*16) 0, 100% 50%, calc(100% - var(--s)*16) 100%, calc(var(--s)*16) 100%);
 }
 .cat__h span{
   display:flex; align-items:center; gap:calc(var(--s)*10);
-  background:linear-gradient(180deg,var(--wine-hi),var(--wine) 50%,var(--wine-lo));
+  background:linear-gradient(180deg,#B93033 0%,var(--wine-hi) 14%,var(--wine) 50%,var(--wine-lo) 90%,#4E0A0A 100%);
+  box-shadow:inset 0 calc(var(--s)*1.5) 0 rgba(255,220,170,.3), inset 0 calc(var(--s)*-1.5) 0 rgba(0,0,0,.3);
   clip-path:polygon(0 50%, calc(var(--s)*15) 0, calc(100% - var(--s)*15) 0, 100% 50%, calc(100% - var(--s)*15) 100%, calc(var(--s)*15) 100%);
   padding:calc(var(--s)*7) calc(var(--s)*30) calc(var(--s)*8);
   font-family:var(--font-display); font-weight:800;
@@ -161,11 +174,13 @@ body{ margin:0; background:#1B1410; font-family:var(--font-body); -webkit-font-s
 }
 .phone{
   padding:calc(var(--s)*3);
-  background:linear-gradient(180deg,var(--g-hi),var(--g-mid) 45%,var(--g-deep));
+  filter:drop-shadow(0 calc(var(--s)*5) calc(var(--s)*10) rgba(74,26,8,.32));
+  background:var(--gold-metal);
   clip-path:polygon(0 50%, calc(var(--s)*20) 0, calc(100% - var(--s)*20) 0, 100% 50%, calc(100% - var(--s)*20) 100%, calc(var(--s)*20) 100%);
 }
 .phone__in{
-  background:linear-gradient(180deg,var(--wine-hi),var(--wine) 45%,var(--wine-lo));
+  background:linear-gradient(180deg,#B93033 0%,var(--wine-hi) 14%,var(--wine) 48%,var(--wine-lo) 88%,#4E0A0A 100%);
+  box-shadow:inset 0 calc(var(--s)*2) 0 rgba(255,220,170,.28), inset 0 calc(var(--s)*-2) 0 rgba(0,0,0,.3);
   clip-path:polygon(0 50%, calc(var(--s)*19) 0, calc(100% - var(--s)*19) 0, 100% 50%, calc(100% - var(--s)*19) 100%, calc(var(--s)*19) 100%);
   padding:calc(var(--s)*11) calc(var(--s)*34) calc(var(--s)*13);
   text-align:center;
@@ -203,7 +218,17 @@ body{ margin:0; background:#1B1410; font-family:var(--font-body); -webkit-font-s
         <div class="head__t">
           <p class="kicker">מסעדת אלגריה</p>
           <h1 class="title"><span>תפריט</span><span>ראש השנה</span></h1>
-          <p class="tagline">אוכל ביתי טעים, טרי ואיכותי</p>
+          <svg class="flourish" viewBox="0 0 420 26" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">
+          <g fill="none" stroke="#C9A227" stroke-width="2.4" stroke-linecap="round">
+            <path d="M210 13h108"/><path d="M102 13H210"/>
+            <path d="M318 13c8-9 22-9 28-1 5 7-1 14-8 12-6-2-7-9-1-12 7-4 18-1 24 6"/>
+            <path d="M102 13c-8-9-22-9-28-1-5 7 1 14 8 12 6-2 7-9 1-12-7-4-18-1-24 6"/>
+          </g>
+          <path d="M210 5l5 8-5 8-5-8Z" fill="#C9A227"/>
+          <circle cx="232" cy="13" r="3" fill="#C9A227" opacity=".7"/>
+          <circle cx="188" cy="13" r="3" fill="#C9A227" opacity=".7"/>
+        </svg>
+        <p class="tagline">אוכל ביתי טעים, טרי ואיכותי</p>
         </div>
         <img src="assets/alegria-logo-web.png" alt="מסעדת אלגריה">
       </header>

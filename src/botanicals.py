@@ -3,93 +3,152 @@
 
 DEFS = '''
 <defs>
-  <linearGradient id="pg" x1="0" y1="0" x2=".4" y2="1">
-    <stop offset="0" stop-color="#D9483A"/><stop offset=".5" stop-color="#B02A22"/><stop offset="1" stop-color="#6E100F"/>
+  <filter id="drop" x="-30%" y="-30%" width="170%" height="170%">
+    <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#4A1A08" flood-opacity=".34"/>
+  </filter>
+  <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" seed="7" result="n"/>
+    <feColorMatrix in="n" type="saturate" values="0" result="g"/>
+    <feComponentTransfer in="g"><feFuncA type="linear" slope=".5"/></feComponentTransfer>
+  </filter>
+  <filter id="stain" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.007" numOctaves="3" seed="21" result="n"/>
+    <feColorMatrix in="n" type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="linear" slope=".26"/></feComponentTransfer>
+  </filter>
+
+  <radialGradient id="pomB" cx=".33" cy=".26" r=".92">
+    <stop offset="0"   stop-color="#F07660"/><stop offset=".22" stop-color="#D8412F"/>
+    <stop offset=".58" stop-color="#A81E18"/><stop offset=".85" stop-color="#71100E"/>
+    <stop offset="1"   stop-color="#4E0908"/>
+  </radialGradient>
+  <radialGradient id="pomRim" cx=".5" cy=".5" r=".5">
+    <stop offset=".62" stop-color="#3A0605" stop-opacity="0"/>
+    <stop offset="1"   stop-color="#3A0605" stop-opacity=".55"/>
+  </radialGradient>
+  <radialGradient id="pith" cx=".4" cy=".32" r=".8">
+    <stop offset="0" stop-color="#FFF8E6"/><stop offset=".7" stop-color="#F0DCB2"/>
+    <stop offset="1" stop-color="#D8BE8C"/>
+  </radialGradient>
+  <radialGradient id="seed" cx=".35" cy=".3" r=".8">
+    <stop offset="0" stop-color="#F2635F"/><stop offset=".55" stop-color="#C81F28"/>
+    <stop offset="1" stop-color="#8A0D16"/>
+  </radialGradient>
+
+  <radialGradient id="apB" cx=".32" cy=".26" r=".92">
+    <stop offset="0"   stop-color="#F58070"/><stop offset=".24" stop-color="#DC4232"/>
+    <stop offset=".62" stop-color="#AC2019"/><stop offset=".88" stop-color="#75110D"/>
+    <stop offset="1"   stop-color="#530A08"/>
+  </radialGradient>
+
+  <linearGradient id="lfB" x1=".1" y1="0" x2=".9" y2="1">
+    <stop offset="0" stop-color="#8FBA5E"/><stop offset=".45" stop-color="#54893A"/>
+    <stop offset="1" stop-color="#264B1D"/>
   </linearGradient>
-  <linearGradient id="pgc" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#F6E7C8"/><stop offset="1" stop-color="#E4CFA4"/>
+
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#FFFDF4" stop-opacity=".92"/>
+    <stop offset=".3" stop-color="#F4E9CE" stop-opacity=".55"/>
+    <stop offset=".72" stop-color="#E9D8AE" stop-opacity=".6"/>
+    <stop offset="1" stop-color="#FFFDF4" stop-opacity=".85"/>
   </linearGradient>
-  <linearGradient id="ap" x1=".2" y1="0" x2=".8" y2="1">
-    <stop offset="0" stop-color="#E0564A"/><stop offset=".55" stop-color="#B92B22"/><stop offset="1" stop-color="#7C130F"/>
+  <linearGradient id="honeyG" x1="0" y1="0" x2=".7" y2="1">
+    <stop offset="0" stop-color="#FBD46B"/><stop offset=".4" stop-color="#E8A81F"/>
+    <stop offset="1" stop-color="#A66B06"/>
   </linearGradient>
-  <linearGradient id="lf" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#6E9A4A"/><stop offset="1" stop-color="#2F5623"/>
+  <linearGradient id="woodG" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#B98246"/><stop offset=".5" stop-color="#8A5A24"/>
+    <stop offset="1" stop-color="#6B4319"/>
   </linearGradient>
-  <linearGradient id="hy" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#F3BE45"/><stop offset="1" stop-color="#C07E09"/>
+  <linearGradient id="whG" x1="0" y1="0" x2=".6" y2="1">
+    <stop offset="0" stop-color="#F0D283"/><stop offset=".5" stop-color="#C89A2C"/>
+    <stop offset="1" stop-color="#8E680F"/>
   </linearGradient>
-  <linearGradient id="wh" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#E3B95A"/><stop offset="1" stop-color="#A57C1B"/>
+  <linearGradient id="goldL" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#F7E4A6"/><stop offset=".4" stop-color="#C9A227"/>
+    <stop offset=".6" stop-color="#F3DE9B"/><stop offset="1" stop-color="#9A7314"/>
   </linearGradient>
-  <radialGradient id="parch" cx=".5" cy=".42" r=".78">
-    <stop offset="0" stop-color="#FBF4E2"/><stop offset=".62" stop-color="#F5EAD0"/><stop offset="1" stop-color="#E9D9B4"/>
+  <radialGradient id="parch" cx=".5" cy=".4" r=".8">
+    <stop offset="0" stop-color="#FCF6E7"/><stop offset=".6" stop-color="#F6ECD5"/>
+    <stop offset="1" stop-color="#EADBB9"/>
   </radialGradient>
 </defs>'''
 
-# ── יחידות בסיס, כל אחת סביב (0,0) ──
-POM = '''<g>
-  <path d="M0-52c-6-9-16-13-25-12 2 10 10 17 19 19" fill="#7C4A12"/>
-  <path d="M0-46c-30 0-49 22-49 52 0 32 22 56 49 56s49-24 49-56c0-30-19-52-49-52Z" fill="url(#pg)"/>
-  <path d="M0-46V-72" stroke="#6E3C10" stroke-width="7" stroke-linecap="round" fill="none"/>
-  <path d="m0-66-15-13M0-66l15-13M0-59l-21-8M0-59l21-8" stroke="#6E3C10" stroke-width="6" stroke-linecap="round" fill="none"/>
-  <ellipse cx="-17" cy="-6" rx="12" ry="18" fill="#E8705E" opacity=".33"/>
+POM = '''<g filter="url(#drop)">
+  <path d="M0-46c-31 0-50 22-50 53 0 33 22 57 50 57s50-24 50-57c0-31-19-53-50-53Z" fill="url(#pomB)"/>
+  <path d="M0-46c-31 0-50 22-50 53 0 33 22 57 50 57s50-24 50-57c0-31-19-53-50-53Z" fill="url(#pomRim)"/>
+  <path d="M0-44V-76" stroke="#5E2F0C" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="m0-70-16-14M0-70l16-14M0-62l-23-9M0-62l23-9" stroke="#5E2F0C" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+  <ellipse cx="-19" cy="-9" rx="13" ry="21" fill="#FFF" opacity=".2" transform="rotate(-18 -19 -9)"/>
+  <ellipse cx="-23" cy="-19" rx="6" ry="9" fill="#FFF" opacity=".42" transform="rotate(-18 -23 -19)"/>
 </g>'''
 
-POM_CUT = '''<g>
-  <circle r="52" fill="url(#pgc)"/>
-  <circle r="52" fill="none" stroke="#B02A22" stroke-width="5"/>
-  <g fill="#C6202A">
-    <circle cx="-24" cy="-18" r="7"/><circle cx="-8" cy="-26" r="7"/><circle cx="9" cy="-23" r="7"/>
-    <circle cx="24" cy="-13" r="7"/><circle cx="-30" cy="0" r="7"/><circle cx="-13" cy="-7" r="7"/>
-    <circle cx="4" cy="-6" r="7"/><circle cx="21" cy="3" r="7"/><circle cx="-22" cy="16" r="7"/>
-    <circle cx="-5" cy="11" r="7"/><circle cx="12" cy="19" r="7"/><circle cx="-14" cy="31" r="7"/>
-    <circle cx="4" cy="34" r="7"/><circle cx="27" cy="21" r="7"/><circle cx="-33" cy="-32" r="6"/>
+POM_CUT = '''<g filter="url(#drop)">
+  <circle r="52" fill="url(#pith)"/>
+  <circle r="52" fill="none" stroke="url(#pomB)" stroke-width="7"/>
+  <circle r="46" fill="none" stroke="#E6CDA0" stroke-width="2.5"/>
+  <g fill="url(#seed)">
+    <circle cx="-25" cy="-19" r="7.5"/><circle cx="-8" cy="-27" r="7.5"/><circle cx="10" cy="-24" r="7.5"/>
+    <circle cx="25" cy="-13" r="7.5"/><circle cx="-31" cy="0" r="7.5"/><circle cx="-13" cy="-7" r="7.5"/>
+    <circle cx="5" cy="-6" r="7.5"/><circle cx="22" cy="3" r="7.5"/><circle cx="-23" cy="17" r="7.5"/>
+    <circle cx="-5" cy="12" r="7.5"/><circle cx="13" cy="20" r="7.5"/><circle cx="-14" cy="32" r="7"/>
+    <circle cx="5" cy="35" r="7"/><circle cx="28" cy="22" r="7"/><circle cx="-34" cy="-32" r="6.5"/>
   </g>
-  <g fill="#F07A6E" opacity=".55">
-    <circle cx="-26" cy="-20" r="2.4"/><circle cx="6" cy="-8" r="2.4"/><circle cx="-7" cy="9" r="2.4"/>
-    <circle cx="23" cy="1" r="2.4"/><circle cx="2" cy="32" r="2.4"/>
-  </g>
-</g>'''
-
-APPLE = '''<g>
-  <path d="M0-30c-8-8-22-10-31-2-11 9-11 30-3 44 6 11 15 24 24 32a8 8 0 0 0 10 0c9-8 18-21 24-32 8-14 8-35-3-44-9-8-23-6-31 2Z" fill="url(#ap)"/>
-  <path d="M0-30v-18" stroke="#6E3C10" stroke-width="6" stroke-linecap="round" fill="none"/>
-  <path d="M2-42c7-11 19-15 29-13-1 11-11 19-23 19" fill="url(#lf)"/>
-  <ellipse cx="-16" cy="0" rx="8" ry="15" fill="#F0897A" opacity=".35"/>
-</g>'''
-
-LEAF = '''<g>
-  <path d="M0 0c22-30 56-38 82-32-4 30-32 50-62 50-11 0-17-8-20-18Z" fill="url(#lf)"/>
-  <path d="M0 0c26-9 52-16 78-25" stroke="#8FB367" stroke-width="3.5" fill="none" opacity=".75"/>
-</g>'''
-
-WHEAT = '''<g>
-  <path d="M0 0V-96" stroke="#A57C1B" stroke-width="5" stroke-linecap="round" fill="none"/>
-  <g fill="url(#wh)">
-    <ellipse cx="-11" cy="-24" rx="7.5" ry="15" transform="rotate(-24 -11 -24)"/>
-    <ellipse cx="11" cy="-30" rx="7.5" ry="15" transform="rotate(24 11 -30)"/>
-    <ellipse cx="-11" cy="-46" rx="7.5" ry="15" transform="rotate(-24 -11 -46)"/>
-    <ellipse cx="11" cy="-52" rx="7.5" ry="15" transform="rotate(24 11 -52)"/>
-    <ellipse cx="-9" cy="-68" rx="7" ry="14" transform="rotate(-24 -9 -68)"/>
-    <ellipse cx="9" cy="-74" rx="7" ry="14" transform="rotate(24 9 -74)"/>
-    <ellipse cx="0" cy="-92" rx="7" ry="16"/>
+  <g fill="#FFF" opacity=".5">
+    <circle cx="-27" cy="-21" r="2.3"/><circle cx="7" cy="-8" r="2.3"/><circle cx="-7" cy="10" r="2.3"/>
+    <circle cx="24" cy="1" r="2.3"/><circle cx="3" cy="33" r="2.3"/><circle cx="-10" cy="-29" r="2.3"/>
   </g>
 </g>'''
 
-HONEY = '''<g>
-  <path d="M-46 -6h92v58a16 16 0 0 1-16 16h-60a16 16 0 0 1-16-16Z" fill="#F7E7BE" opacity=".75"/>
-  <path d="M-42 22h84v30a14 14 0 0 1-14 14h-56a14 14 0 0 1-14-14Z" fill="url(#hy)"/>
-  <rect x="-52" y="-18" width="104" height="16" rx="8" fill="#B98A22"/>
-  <path d="M-46 -6h92v58a16 16 0 0 1-16 16h-60a16 16 0 0 1-16-16Z" fill="none" stroke="#C79A34" stroke-width="4"/>
-  <path d="M34-72v54" stroke="#8A5C18" stroke-width="7" stroke-linecap="round" fill="none"/>
-  <g fill="#C9911C">
-    <ellipse cx="34" cy="-56" rx="15" ry="6"/><ellipse cx="34" cy="-44" rx="15" ry="6"/><ellipse cx="34" cy="-32" rx="13" ry="6"/>
-  </g>
-  <path d="M34-26c0 12 6 16 6 26" stroke="url(#hy)" stroke-width="7" stroke-linecap="round" fill="none"/>
+APPLE = '''<g filter="url(#drop)">
+  <path d="M0-28c-9-9-24-11-34-2-12 10-12 33-3 48 7 12 16 26 26 35a9 9 0 0 0 11 0c10-9 19-23 26-35 9-15 9-38-3-48-10-9-25-7-34 2Z" fill="url(#apB)"/>
+  <path d="M0-28c-9-9-24-11-34-2-12 10-12 33-3 48 7 12 16 26 26 35a9 9 0 0 0 11 0c10-9 19-23 26-35 9-15 9-38-3-48-10-9-25-7-34 2Z" fill="url(#pomRim)" opacity=".8"/>
+  <path d="M0-30v-20" stroke="#5E2F0C" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+  <path d="M3-44c8-12 21-16 32-14-2 12-13 21-25 21Z" fill="url(#lfB)"/>
+  <path d="M5-42c8-6 17-10 26-11" stroke="#A9CE7C" stroke-width="2.5" fill="none" opacity=".7"/>
+  <ellipse cx="-17" cy="-2" rx="9" ry="17" fill="#FFF" opacity=".22" transform="rotate(-14 -17 -2)"/>
+  <ellipse cx="-20" cy="-12" rx="4.5" ry="7" fill="#FFF" opacity=".45"/>
 </g>'''
 
-SWIRL = '''<path d="M0 0c26-20 58-20 80-4 16 12 14 32-4 34-14 2-22-10-16-20 8-13 30-14 44-2"
-      fill="none" stroke="#C9A227" stroke-width="4.5" stroke-linecap="round" opacity=".85"/>'''
+LEAF = '''<g filter="url(#drop)">
+  <path d="M0 0c24-33 60-41 88-34-4 32-34 54-66 54-12 0-19-9-22-20Z" fill="url(#lfB)"/>
+  <path d="M2 0c28-10 56-18 84-27" stroke="#B7D897" stroke-width="3" fill="none" opacity=".6"/>
+  <g stroke="#B7D897" stroke-width="1.8" fill="none" opacity=".45">
+    <path d="M22-8c2-8 6-14 11-18"/><path d="M42-15c2-8 7-13 12-17"/><path d="M62-22c2-7 6-11 11-14"/>
+  </g>
+</g>'''
+
+WHEAT = '''<g filter="url(#drop)">
+  <path d="M0 0V-100" stroke="#9C7318" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+  <g fill="url(#whG)" stroke="#8A6410" stroke-width="1.2">
+    <ellipse cx="-12" cy="-25" rx="8" ry="16" transform="rotate(-25 -12 -25)"/>
+    <ellipse cx="12" cy="-31" rx="8" ry="16" transform="rotate(25 12 -31)"/>
+    <ellipse cx="-12" cy="-48" rx="8" ry="16" transform="rotate(-25 -12 -48)"/>
+    <ellipse cx="12" cy="-54" rx="8" ry="16" transform="rotate(25 12 -54)"/>
+    <ellipse cx="-10" cy="-71" rx="7.5" ry="15" transform="rotate(-25 -10 -71)"/>
+    <ellipse cx="10" cy="-77" rx="7.5" ry="15" transform="rotate(25 10 -77)"/>
+    <ellipse cx="0" cy="-95" rx="7.5" ry="17"/>
+  </g>
+</g>'''
+
+HONEY = '''<g filter="url(#drop)">
+  <path d="M-44 20h88v32a16 16 0 0 1-16 16h-56a16 16 0 0 1-16-16Z" fill="url(#honeyG)"/>
+  <path d="M-46-8h92v60a16 16 0 0 1-16 16h-60a16 16 0 0 1-16-16Z" fill="url(#glass)"/>
+  <path d="M-46-8h92v60a16 16 0 0 1-16 16h-60a16 16 0 0 1-16-16Z" fill="none" stroke="#C79A34" stroke-width="3.5"/>
+  <rect x="-53" y="-22" width="106" height="18" rx="9" fill="url(#goldL)"/>
+  <rect x="-38" y="2" width="9" height="58" rx="4.5" fill="#FFF" opacity=".5"/>
+  <path d="M36-78v58" stroke="url(#woodG)" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <g fill="url(#woodG)">
+    <ellipse cx="36" cy="-60" rx="16" ry="6.5"/><ellipse cx="36" cy="-47" rx="16" ry="6.5"/><ellipse cx="36" cy="-34" rx="14" ry="6"/>
+  </g>
+  <path d="M36-28c0 14 7 18 7 30" stroke="url(#honeyG)" stroke-width="7.5" stroke-linecap="round" fill="none"/>
+</g>'''
+
+SWIRL = '''<g fill="none" stroke="url(#goldL)" stroke-linecap="round">
+  <path d="M0 0c28-22 62-22 86-4 17 13 15 35-5 37-15 2-24-11-17-22 9-14 32-15 47-2" stroke-width="5"/>
+  <path d="M14 14c22-14 46-13 63 0" stroke-width="3" opacity=".7"/>
+</g>'''
 
 
 def _u(body, x, y, s=1.0, r=0.0, op=1.0):
@@ -130,7 +189,12 @@ def frame_svg(w=1080, h=1350):
 
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" '
             f'width="{w}" height="{h}" preserveAspectRatio="xMidYMid slice">{DEFS}'
-            f'<rect width="{w}" height="{h}" fill="url(#parch)"/>' + "".join(p) + '</svg>')
+            f'<rect width="{w}" height="{h}" fill="url(#parch)"/>'
+            f'<rect width="{w}" height="{h}" filter="url(#stain)" opacity=".68" '
+            f'style="mix-blend-mode:multiply"/>'
+            f'<rect width="{w}" height="{h}" filter="url(#grain)" opacity=".2" '
+            f'style="mix-blend-mode:multiply"/>'
+            + "".join(p) + '</svg>')
 
 
 if __name__ == "__main__":

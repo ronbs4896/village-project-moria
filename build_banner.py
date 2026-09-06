@@ -17,6 +17,12 @@ html = (ROOT/"src"/"banner.html").read_text(encoding="utf-8")
 html = html.replace('src="assets/alegria-logo-web.png"', f'src="{LOGO}"')
 print("פונטים:"); html = mb.embed_fonts(html)
 
+bspec = importlib.util.spec_from_file_location("bot", ROOT/"src"/"botanicals.py")
+bot = importlib.util.module_from_spec(bspec); bspec.loader.exec_module(bot)
+art = bot.frame_svg().replace('<svg ', '<svg class="banner__art" ', 1)
+html = html.replace('<!--ART-->', art)
+print('מסגרת בוטנית:', len(art), 'תווים')
+
 (DIST/"banner-artifact.html").write_text(html, encoding="utf-8")
 page = ('<!doctype html>\n<html lang="he" dir="rtl">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n' + html)
@@ -39,6 +45,7 @@ FORMATS = [("4x5",  1080, 1350, "פיד — הפורמט הראשי", ""),
 .cat{padding:calc(var(--s)*22) calc(var(--s)*24)}
 .cat__h{font-size:calc(var(--s)*46);margin-bottom:calc(var(--s)*16);padding-bottom:calc(var(--s)*12)}
 .cat li{padding-block:calc(var(--s)*4)}
+.cat--2 ul{column-count:1}
 .cta{padding:calc(var(--s)*24) calc(var(--s)*40) calc(var(--s)*30)}
 .cta__label{font-size:calc(var(--s)*36)}
 .cta__phone a{font-size:calc(var(--s)*104)}
@@ -64,10 +71,15 @@ def render():
                   document.querySelectorAll('.cat').forEach(c=>{
                     const ul=c.querySelector('ul'), box=c.getBoundingClientRect();
                     const items=[...ul.children]; total+=items.length;
+                    const name=c.querySelector('.cat__h').textContent;
+                    // א. כל פריט חייב להיות בתוך גבול הכרטיס
                     const vis=items.filter(li=>{const r=li.getBoundingClientRect();
                       return r.bottom<=box.bottom+1.5 && r.right<=box.right+1.5 && r.left>=box.left-1.5;});
-                    if(vis.length<items.length)
-                      bad.push(c.querySelector('.cat__h').textContent+' '+vis.length+'/'+items.length);
+                    if(vis.length<items.length) bad.push(name+' '+vis.length+'/'+items.length);
+                    // ב. אף פריט לא נשבר לשתי שורות
+                    const hs=items.map(li=>li.offsetHeight), min=Math.min(...hs);
+                    const wrapped=items.filter((li,i)=>hs[i]>min*1.45).map(li=>li.textContent.trim());
+                    if(wrapped.length) bad.push(name+' נשבר: '+wrapped.join(', '));
                   });
                   return {total, bad};}""")
 

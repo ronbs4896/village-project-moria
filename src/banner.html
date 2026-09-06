@@ -2,7 +2,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Assistant:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@500;700;800;900&family=Assistant:wght@400;500;600;700&display=swap">
 
 <style id="birzia-faces">
 @font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Light.woff2") format("woff2");   font-weight:300;     font-style:normal; font-display:swap; }
@@ -15,173 +15,237 @@
 <style>
 :root{
   color-scheme: light;
-  --ink:#333333; --cream:#F2EADE; --orange:#F5871F; --gold:#FCC50D;
-  --paper:#FFFCF7; --ink-deep:#232019; --rule:#DCCFB8;
+  /* קלף */
+  --parch:#F8F0DA; --parch-2:#EFE1BD;
+  /* בורדו החג */
+  --wine:#8C1A1C; --wine-hi:#A62628; --wine-lo:#6A1011;
+  /* זהב מטאלי */
+  --g-hi:#FBEFC0; --g-mid:#D9B45A; --g-deep:#A8801C;
+  /* מותג */
+  --orange:#F5871F; --brand-gold:#FCC50D;
+  --ink:#4A3016;
   --font-display:'Birzia','Fb IguanaNew','Rubik','Heebo',system-ui,sans-serif;
   --font-body:'Birzia','Fb IguanaNew','Assistant','Heebo',system-ui,sans-serif;
 }
 *,*::before,*::after{ box-sizing:border-box; }
-body{ margin:0; background:var(--ink-deep); font-family:var(--font-body); -webkit-font-smoothing:antialiased; }
-
-.stage{ display:flex; flex-direction:column; align-items:center; gap:20px; padding:24px 12px 36px; }
-
+body{ margin:0; background:#1B1410; font-family:var(--font-body); -webkit-font-smoothing:antialiased; }
+.stage{ display:flex; flex-direction:column; align-items:center; padding:24px 12px 36px; }
 .frame{ container-type:inline-size; width:min(100%, 540px); }
+
 .banner{
-  --s:calc(100cqw / 1080);        /* יחידה אחת = פיקסל אחד בקנה מידה של 1080 */
+  --s:calc(100cqw / 1080);
+  position:relative;
   width:100%;
-  aspect-ratio:1080 / 1350;       /* 4:5 — פיד מטא */
-  display:flex; flex-direction:column;
-  background:var(--cream); color:var(--ink);
+  aspect-ratio:1080 / 1350;
   overflow:hidden;
+  background:var(--parch);
+  color:var(--ink);
+  display:flex; flex-direction:column;
 }
+/* מסגרת הקישוט הבוטני */
+.banner__art{
+  position:absolute; inset:0; width:100%; height:100%; z-index:0;
+}
+.banner > *:not(.banner__art){ position:relative; z-index:1; }
 
-/* ── פס עליון ── */
-.top{
+/* ── ראש ── */
+.head{
   flex:none;
-  display:flex; align-items:center; justify-content:space-between;
-  gap:calc(var(--s)*24);
-  background:var(--ink);
-  padding:calc(var(--s)*15) calc(var(--s)*44);
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:calc(var(--s)*18);
+  padding:calc(var(--s)*30) calc(var(--s)*42) 0;
 }
-.top img{ width:calc(var(--s)*112); height:auto; flex:none; }
-.top__txt{ text-align:right; }
-.top__name{
-  margin:0; font-family:var(--font-display); font-weight:800;
-  font-size:calc(var(--s)*40); line-height:1.1; color:var(--cream); letter-spacing:.01em;
+.head img{ width:calc(var(--s)*168); height:auto; flex:none; margin-top:calc(var(--s)*6); }
+.head__t{ text-align:right; padding-top:calc(var(--s)*4); flex:1; }
+.kicker{
+  margin:0; font-family:var(--font-display); font-weight:700;
+  font-size:calc(var(--s)*26); letter-spacing:.16em; color:var(--wine);
 }
-.top__sub{
-  margin:calc(var(--s)*4) 0 0; font-family:var(--font-display); font-weight:600;
-  font-size:calc(var(--s)*25); line-height:1.2; color:var(--gold); letter-spacing:.1em;
+.title{
+  margin:calc(var(--s)*4) 0 0;
+  font-family:'Frank Ruhl Libre','Birzia',serif; font-weight:900;
+  font-size:calc(var(--s)*88); line-height:.96; letter-spacing:-.01em;
+  color:var(--g-deep);
+}
+.title span{ display:block; }
+@supports (-webkit-background-clip: text){
+  .title{
+    background-image:linear-gradient(180deg,#FDF6D8 0%,#EBCC72 26%,#C39527 50%,#F6E6A8 66%,#A87C16 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 calc(var(--s)*2) 0 rgba(106,16,17,.85));
+  }
+}
+.tagline{
+  margin:calc(var(--s)*10) 0 0;
+  font-family:var(--font-display); font-weight:700;
+  font-size:calc(var(--s)*27); letter-spacing:.02em; color:var(--wine);
 }
 
-/* ── בלוק המכירה ── */
-.hero{
-  flex:none; background:var(--gold); text-align:center;
-  padding:calc(var(--s)*18) calc(var(--s)*40) calc(var(--s)*20);
+/* ── סרט המכירה ── */
+.sale{
+  flex:none;
+  margin:calc(var(--s)*18) calc(var(--s)*42) 0;
+  padding:calc(var(--s)*3);
+  background:linear-gradient(180deg,var(--g-hi),var(--g-mid) 45%,var(--g-deep));
+  clip-path:polygon(0 50%, calc(var(--s)*22) 0, calc(100% - var(--s)*22) 0, 100% 50%, calc(100% - var(--s)*22) 100%, calc(var(--s)*22) 100%);
 }
-.hero__eyebrow{
-  margin:0; font-family:var(--font-display); font-weight:700;
-  font-size:calc(var(--s)*36); line-height:1; letter-spacing:.22em; color:var(--ink);
+.sale__in{
+  background:linear-gradient(180deg,var(--wine-hi),var(--wine) 45%,var(--wine-lo));
+  clip-path:polygon(0 50%, calc(var(--s)*21) 0, calc(100% - var(--s)*21) 0, 100% 50%, calc(100% - var(--s)*21) 100%, calc(var(--s)*21) 100%);
+  padding:calc(var(--s)*13) calc(var(--s)*40) calc(var(--s)*15);
+  text-align:center; color:var(--g-hi);
 }
-.hero__title{
-  margin:calc(var(--s)*10) 0 0; font-family:var(--font-display); font-weight:900;
-  font-size:calc(var(--s)*96); line-height:.98; letter-spacing:-.025em; color:var(--ink);
+.sale__h{
+  margin:0; font-family:var(--font-display); font-weight:900;
+  font-size:calc(var(--s)*54); line-height:1; letter-spacing:.01em; color:#FFF6DC;
 }
-.hero__when{
-  display:inline-flex; align-items:center; gap:calc(var(--s)*20);
-  margin:calc(var(--s)*16) 0 0;
-  padding:calc(var(--s)*11) calc(var(--s)*30);
-  border-radius:999px; background:var(--ink); color:var(--cream);
-  font-family:var(--font-display); font-weight:700; font-size:calc(var(--s)*30); line-height:1.25;
+.sale__w{
+  margin:calc(var(--s)*7) 0 0; font-family:var(--font-display); font-weight:700;
+  font-size:calc(var(--s)*28); line-height:1.2; color:var(--g-hi);
 }
-.hero__when b{ color:var(--gold); }
-.hero__when i{ width:1px; align-self:stretch; background:rgba(242,234,222,.35); }
+.sale__w b{ color:#FFE9A8; }
 .ltr{ direction:ltr; unicode-bidi:isolate; font-variant-numeric:tabular-nums; }
 
-/* ── המוצרים ── */
+/* ── הקטגוריות ── */
 .goods{
   flex:1; min-height:0;
   display:grid; grid-template-columns:1fr 1fr;
-  gap:calc(var(--s)*16);
-  padding:calc(var(--s)*22) calc(var(--s)*30);
+  gap:calc(var(--s)*30) calc(var(--s)*22);
+  grid-template-rows:auto auto;
+  align-content:space-between;
+  padding:calc(var(--s)*40) calc(var(--s)*42) calc(var(--s)*16);
 }
-.cat{
-  background:var(--paper); border:1px solid var(--rule); border-radius:calc(var(--s)*14);
-  padding:calc(var(--s)*14) calc(var(--s)*18) calc(var(--s)*14);
-  min-height:0;
+.cat{ position:relative; padding-top:calc(var(--s)*22); min-height:0; }
+.cat__box{
+  height:100%;
+  background:rgba(253,247,231,.93);
+  border:calc(var(--s)*2) solid var(--g-mid);
+  border-radius:calc(var(--s)*18);
+  padding:calc(var(--s)*34) calc(var(--s)*20) calc(var(--s)*16);
+  box-shadow:inset 0 0 0 calc(var(--s)*1.5) rgba(168,128,22,.28);
 }
 .cat__h{
-  margin:0 0 calc(var(--s)*10);
-  padding-bottom:calc(var(--s)*8);
-  border-bottom:calc(var(--s)*3) solid var(--orange);
+  position:absolute; top:0; left:50%; transform:translateX(-50%); z-index:2;
+  margin:0; padding:calc(var(--s)*2.5);
+  background:linear-gradient(180deg,var(--g-hi),var(--g-mid) 45%,var(--g-deep));
+  clip-path:polygon(0 50%, calc(var(--s)*16) 0, calc(100% - var(--s)*16) 0, 100% 50%, calc(100% - var(--s)*16) 100%, calc(var(--s)*16) 100%);
+}
+.cat__h span{
+  display:flex; align-items:center; gap:calc(var(--s)*10);
+  background:linear-gradient(180deg,var(--wine-hi),var(--wine) 50%,var(--wine-lo));
+  clip-path:polygon(0 50%, calc(var(--s)*15) 0, calc(100% - var(--s)*15) 0, 100% 50%, calc(100% - var(--s)*15) 100%, calc(var(--s)*15) 100%);
+  padding:calc(var(--s)*7) calc(var(--s)*30) calc(var(--s)*8);
   font-family:var(--font-display); font-weight:800;
-  font-size:calc(var(--s)*34); line-height:1; color:var(--ink);
+  font-size:calc(var(--s)*32); line-height:1; color:#FFF3D4; white-space:nowrap;
 }
-.cat ul{
-  margin:0; padding:0; list-style:none;
-  column-gap:calc(var(--s)*16);
-}
+.cat__h svg{ width:calc(var(--s)*24); height:calc(var(--s)*24); fill:var(--g-hi); flex:none; }
+.cat ul{ margin:0; padding:0; list-style:none; column-gap:calc(var(--s)*18); }
 .cat--2 ul{ column-count:2; }
 .cat li{
   break-inside:avoid;
-  font-size:calc(var(--s)*21); font-weight:600; line-height:1.26;
-  padding-block:calc(var(--s)*1.5);
-  color:var(--ink);
+  display:flex; align-items:baseline; gap:calc(var(--s)*8);
+  font-weight:600; line-height:1.24; color:var(--ink);
+  padding-block:calc(var(--s)*2);
+}
+.cat li::before{
+  content:""; flex:none;
+  width:calc(var(--s)*7); height:calc(var(--s)*7);
+  border-radius:50%; background:var(--wine); translate:0 calc(var(--s)*-2);
 }
 
-/* ── קריאה לפעולה ── */
-.cta{
-  flex:none; background:var(--ink); text-align:center;
-  padding:calc(var(--s)*13) calc(var(--s)*40) calc(var(--s)*16);
+/* ── תחתית ── */
+.foot{
+  flex:none;
+  display:flex; align-items:center; justify-content:space-between; gap:calc(var(--s)*18);
+  padding:0 calc(var(--s)*42) calc(var(--s)*34);
 }
-.cta__label{
+.phone{
+  padding:calc(var(--s)*3);
+  background:linear-gradient(180deg,var(--g-hi),var(--g-mid) 45%,var(--g-deep));
+  clip-path:polygon(0 50%, calc(var(--s)*20) 0, calc(100% - var(--s)*20) 0, 100% 50%, calc(100% - var(--s)*20) 100%, calc(var(--s)*20) 100%);
+}
+.phone__in{
+  background:linear-gradient(180deg,var(--wine-hi),var(--wine) 45%,var(--wine-lo));
+  clip-path:polygon(0 50%, calc(var(--s)*19) 0, calc(100% - var(--s)*19) 0, 100% 50%, calc(100% - var(--s)*19) 100%, calc(var(--s)*19) 100%);
+  padding:calc(var(--s)*11) calc(var(--s)*34) calc(var(--s)*13);
+  text-align:center;
+}
+.phone__l{
   margin:0; font-family:var(--font-display); font-weight:700;
-  font-size:calc(var(--s)*28); letter-spacing:.16em; color:var(--cream);
+  font-size:calc(var(--s)*23); letter-spacing:.1em; color:var(--g-hi);
 }
-.cta__phone{
-  display:flex; align-items:center; justify-content:center; gap:calc(var(--s)*16);
-  margin:calc(var(--s)*8) 0 0; color:var(--gold);
+.phone__n{
+  display:flex; align-items:center; justify-content:center; gap:calc(var(--s)*12);
+  margin:calc(var(--s)*3) 0 0; color:#FFF3D4;
 }
-.cta__phone svg{ width:calc(var(--s)*54); height:calc(var(--s)*54); fill:currentColor; flex:none; }
-.cta__phone a{
-  font-family:var(--font-display); font-weight:900; font-size:calc(var(--s)*76);
-  line-height:1; letter-spacing:.01em; color:var(--gold); text-decoration:none;
-  direction:ltr; font-variant-numeric:tabular-nums;
+.phone__n svg{ width:calc(var(--s)*30); height:calc(var(--s)*30); fill:currentColor; flex:none; }
+.phone__n a{
+  font-family:var(--font-display); font-weight:900; font-size:calc(var(--s)*50);
+  line-height:1.1; color:#FFF3D4; text-decoration:none; direction:ltr; font-variant-numeric:tabular-nums;
 }
-.cta__addr{
-  margin:calc(var(--s)*8) 0 0; font-size:calc(var(--s)*25); font-weight:600; color:var(--cream);
+.where{
+  text-align:center; flex:none;
+  border:calc(var(--s)*2) solid var(--g-mid);
+  border-radius:calc(var(--s)*14);
+  background:rgba(253,247,231,.9);
+  padding:calc(var(--s)*12) calc(var(--s)*24);
+  font-weight:700; font-size:calc(var(--s)*24); line-height:1.45; color:var(--ink);
 }
+.where b{ color:var(--wine); display:block; font-size:calc(var(--s)*21); letter-spacing:.08em; }
 </style>
 
 <div class="stage">
   <div class="frame">
     <div class="banner" lang="he" dir="rtl">
+      <!--ART-->
 
-      <header class="top">
-        <div class="top__txt">
-          <p class="top__name">מסעדת אלגריה</p>
-          <p class="top__sub">אוכל ביתי טעים, טרי ואיכותי</p>
+      <header class="head">
+        <div class="head__t">
+          <p class="kicker">מסעדת אלגריה</p>
+          <h1 class="title"><span>תפריט</span><span>ראש השנה</span></h1>
+          <p class="tagline">אוכל ביתי טעים, טרי ואיכותי</p>
         </div>
         <img src="assets/alegria-logo-web.png" alt="מסעדת אלגריה">
       </header>
 
-      <section class="hero">
-        <p class="hero__eyebrow">לראש השנה</p>
-        <h1 class="hero__title">המכירה הגדולה</h1>
-        <!-- ══ תאריכי המכירה — לעדכון כאן בלבד ══ -->
-        <p class="hero__when">
-          <span><b class="ltr">6–11</b> בספטמבר · עד ערב החג</span>
-          <i aria-hidden="true"></i>
-          <span>כל יום <b class="ltr">7:00–15:00</b></span>
-        </p>
+      <section class="sale">
+        <div class="sale__in">
+          <p class="sale__h">המכירה הגדולה</p>
+          <!-- ══ תאריכי המכירה — לעדכון כאן בלבד ══ -->
+          <p class="sale__w"><b class="ltr">6–11</b> בספטמבר · עד ערב החג &nbsp;•&nbsp; כל יום <b class="ltr">7:00–15:00</b></p>
+        </div>
       </section>
 
       <main class="goods">
         <section class="cat cat--2">
-          <h2 class="cat__h">בשרים</h2>
-          <ul><li>צלי בקר</li><li>לשון</li><li>לחי עגל</li><li>אסאדו</li><li>קובה סלק</li><li>מעורב</li><li>קציצות</li><li>פרגית</li><li>חזה עוף</li><li>ממולאים</li><li>מוסקה</li><li>מפרום</li><li>שניצל</li><li>בשר ראש</li><li>מוקפץ עוף סיני</li><li>חזה עוף ממולא</li><li>טורטיית בשר</li><li>מוח</li></ul>
+          <h2 class="cat__h"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c3-4 7-6 11-6 3 0 5 1 6 3l-1.5 3L20 15c-1 2-3 3-6 3-4 0-8-2-11-6Z"/></svg>בשרים</span></h2>
+          <div class="cat__box"><ul><li>צלי בקר</li><li>לשון</li><li>לחי עגל</li><li>אסאדו</li><li>קובה סלק</li><li>מעורב</li><li>קציצות</li><li>פרגית</li><li>חזה עוף</li><li>ממולאים</li><li>מוסקה</li><li>מפרום</li><li>שניצל</li><li>בשר ראש</li><li>מוקפץ עוף סיני</li><li>חזה עוף ממולא</li><li>טורטיית בשר</li><li>מוח</li></ul></div>
         </section>
         <section class="cat cat--2">
-          <h2 class="cat__h">תוספות</h2>
-          <ul><li>אורז לבן</li><li>אורז צהוב</li><li>לנטרייה</li><li>זיתים מבושלים</li><li>תפוח אדמה</li><li>פשטידה</li><li>ארטישוק ופטריות</li><li>ספגטי מוקפץ</li><li>קוסקוס</li><li>טנזייה</li></ul>
+          <h2 class="cat__h"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13c2-3 6-5 10-5s6 2 7 4c-1 2-3 4-7 4s-8-2-10-3Z"/></svg>סלטים</span></h2>
+          <div class="cat__box"><ul><li>מטבוחה</li><li>סלק אדום</li><li>סלט ביצים</li><li>תפוח אדמה במיונז</li><li>חציל במיונז</li><li>תירס במיונז</li><li>פלפל חריף</li><li>פלפל מתוק</li><li>חציל מזרחי</li><li>כרוב סגול</li><li>כרוב לבן</li><li>חמוצי הבית</li><li>זעלוק</li><li>תירס פיקנטי</li><li>גזר חריף מרוקאי</li><li>גזר מגורד</li></ul></div>
         </section>
         <section class="cat cat--2">
-          <h2 class="cat__h">סלטים</h2>
-          <ul><li>מטבוחה</li><li>סלק אדום</li><li>סלט ביצים</li><li>תפוח אדמה במיונז</li><li>חציל במיונז</li><li>תירס במיונז</li><li>פלפל חריף</li><li>פלפל מתוק</li><li>חציל מזרחי</li><li>כרוב סגול</li><li>כרוב לבן</li><li>חמוצי הבית</li><li>זעלוק</li><li>תירס פיקנטי</li><li>גזר חריף מרוקאי</li><li>גזר מגורד</li></ul>
+          <h2 class="cat__h"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16c0-4 4-8 9-8 3 0 5 1 6 3l-1 3 1 3c-1 2-3 3-6 3-5 0-9-2-9-4Z"/></svg>תוספות</span></h2>
+          <div class="cat__box"><ul><li>אורז לבן</li><li>אורז צהוב</li><li>לנטרייה</li><li>זיתים מבושלים</li><li>תפוח אדמה</li><li>פשטידה</li><li>ארטישוק ופטריות</li><li>ספגטי מוקפץ</li><li>קוסקוס</li><li>טנזייה</li></ul></div>
         </section>
         <section class="cat">
-          <h2 class="cat__h">דגים</h2>
-          <ul><li>דג מטוגן</li><li>קציצות דגים</li><li>ביצי דג</li><li>סלמון</li><li>טונה</li></ul>
+          <h2 class="cat__h"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12c4-5 9-7 13-7 3 0 5 1 6 3l-2 4 2 4c-1 2-3 3-6 3-4 0-9-2-13-7Z"/></svg>דגים</span></h2>
+          <div class="cat__box"><ul><li>דג מטוגן</li><li>קציצות דגים</li><li>ביצי דג</li><li>סלמון</li><li>טונה</li></ul></div>
         </section>
       </main>
 
-      <footer class="cta">
-        <p class="cta__label">להזמנות ובירורים</p>
-        <p class="cta__phone">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
-          <a href="tel:+972545437528">054-543-7528</a>
-        </p>
-        <p class="cta__addr">רחוב הזית 118, קרית גת</p>
+      <footer class="foot">
+        <p class="where"><b>כתובת</b>רחוב הזית 118, קרית גת</p>
+        <div class="phone">
+          <div class="phone__in">
+            <p class="phone__l">להזמנות ובירורים</p>
+            <p class="phone__n">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
+              <a href="tel:+972545437528">054-543-7528</a>
+            </p>
+          </div>
+        </div>
       </footer>
 
     </div>

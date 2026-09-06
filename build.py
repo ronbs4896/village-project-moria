@@ -31,11 +31,16 @@ def render_simanim():
         f'<span>{name}</span></li>'
         for name, path in mod.SIMANIM)
     return (
-        '      <section class="simanim">\n'
-        '        <h2 class="simanim__head">סימני ראש השנה <em>· לשנה טובה ומתוקה</em></h2>\n'
-        '        <ul class="simanim__row">\n' + cells + '\n        </ul>\n'
-        '      </section>')
-
+        '        <div class="courses__row">\n'
+        '          <section class="course span-3">\n'
+        '            <h2 class="course__tab">סימני ראש השנה</h2>\n'
+        '            <div class="course__panel">\n'
+        '              <ul class="simanim__row">\n' + cells + '\n              </ul>\n'
+        '              <p class="simanim__note">לשנה טובה ומתוקה</p>\n'
+        '            </div>\n'
+        '          </section>\n'
+        '        </div>'
+    )
 
 FONT_DIR = ROOT / "assets" / "fonts"
 # משקל -> מילת המפתח שמזהה את הקובץ בשם שעומר צופי מספק

@@ -81,7 +81,7 @@ body{
   background:var(--ink);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cg fill='none' stroke='%23FCC50D' stroke-opacity='0.055' stroke-width='2'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100'/%3E%3Cpath d='M28 0L28 34L0 50M28 34L56 50'/%3E%3C/g%3E%3C/svg%3E");
   background-size:calc(var(--s)*26) calc(var(--s)*46.4);
-  padding:calc(var(--s)*11) calc(var(--s)*16) calc(var(--s)*10);
+  padding:calc(var(--s)*10) calc(var(--s)*16) calc(var(--s)*9);
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -175,31 +175,7 @@ body{
 }
 .sale__when b{ color:var(--gold); font-weight:700; }
 
-/* ---------- סימני ראש השנה ---------- */
-.simanim{
-  flex:none;
-  padding:calc(var(--s)*6) calc(var(--s)*14) calc(var(--s)*5);
-  border-bottom:1px solid var(--rule);
-}
-.simanim__head{
-  display:flex;
-  align-items:center;
-  gap:calc(var(--s)*3.5);
-  margin:0 0 calc(var(--s)*5);
-  font-family:var(--font-display);
-  font-weight:700;
-  font-size:calc(var(--s)*4);
-  letter-spacing:.14em;
-  color:var(--ink-soft);
-  white-space:nowrap;
-}
-.simanim__head::after{
-  content:"";
-  flex:1;
-  height:1px;
-  background:var(--rule);
-}
-.simanim__head em{ font-style:normal; color:var(--orange); letter-spacing:.06em; }
+/* ---------- סימני ראש השנה (קטגוריה) ---------- */
 .simanim__row{
   display:grid;
   grid-template-columns:repeat(8, 1fr);
@@ -212,12 +188,12 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:calc(var(--s)*2.2);
+  gap:calc(var(--s)*2);
   text-align:center;
 }
 .siman svg{
-  width:calc(var(--s)*14.5);
-  height:calc(var(--s)*14.5);
+  width:calc(var(--s)*14);
+  height:calc(var(--s)*14);
   fill:none;
   stroke:var(--orange);
   stroke-width:2.7;
@@ -225,10 +201,19 @@ body{
   stroke-linejoin:round;
 }
 .siman span{
-  font-size:calc(var(--s)*3.3);
+  font-size:calc(var(--s)*3.4);
   font-weight:600;
   line-height:1.15;
   color:var(--ink);
+}
+.simanim__note{
+  margin:calc(var(--s)*3.5) 0 0;
+  text-align:center;
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:calc(var(--s)*3.5);
+  letter-spacing:.1em;
+  color:var(--orange);
 }
 
 /* ---------- אזור הקטגוריות ---------- */
@@ -239,8 +224,8 @@ body{
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  gap:calc(var(--s)*6.5);
-  padding:calc(var(--s)*7) calc(var(--s)*14) calc(var(--s)*6);
+  gap:calc(var(--s)*5.5);
+  padding:calc(var(--s)*6) calc(var(--s)*14) calc(var(--s)*5);
 }
 
 .courses__row{
@@ -292,7 +277,7 @@ body{
   background:var(--paper);
   border:1px solid var(--rule);
   border-radius:calc(var(--s)*1.5);
-  padding:calc(var(--s)*7.5) calc(var(--s)*7) calc(var(--s)*4.5);
+  padding:calc(var(--s)*7) calc(var(--s)*7) calc(var(--s)*4);
 }
 
 /* ---------- פריטים ---------- */
@@ -312,7 +297,7 @@ body{
   display:flex;
   align-items:baseline;
   gap:calc(var(--s)*2.6);
-  padding-block:calc(var(--s)*0.75);
+  padding-block:calc(var(--s)*0.65);
   font-size:calc(var(--s)*3.8);
   font-weight:500;
   line-height:1.2;
@@ -491,9 +476,9 @@ body{
         </p>
       </section>
 
-      <!--SIMANIM-->
-
       <main class="courses">
+
+<!--SIMANIM-->
 
         <div class="courses__row">
           <section class="course span-3">

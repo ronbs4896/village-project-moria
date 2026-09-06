@@ -71,6 +71,8 @@ body{
   flex-direction:column;
   overflow:hidden;
   background:var(--cream);
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27200%27%20viewBox%3D%270%200%20200%20200%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%238A6A2F%27%20stroke-opacity%3D%270.13%27%20stroke-width%3D%272.6%27%3E%3Cpath%20d%3D%27M0.0%20-66.0L19.3%20-46.7L46.7%20-46.7L46.7%20-19.3L66.0%200.0L46.7%2019.3L46.7%2046.7L19.3%2046.7L0.0%2066.0L-19.3%2046.7L-46.7%2046.7L-46.7%2019.3L-66.0%200.0L-46.7%20-19.3L-46.7%20-46.7L-19.3%20-46.7Z%20M200.0%20-66.0L219.3%20-46.7L246.7%20-46.7L246.7%20-19.3L266.0%200.0L246.7%2019.3L246.7%2046.7L219.3%2046.7L200.0%2066.0L180.7%2046.7L153.3%2046.7L153.3%2019.3L134.0%200.0L153.3%20-19.3L153.3%20-46.7L180.7%20-46.7Z%20M0.0%20134.0L19.3%20153.3L46.7%20153.3L46.7%20180.7L66.0%20200.0L46.7%20219.3L46.7%20246.7L19.3%20246.7L0.0%20266.0L-19.3%20246.7L-46.7%20246.7L-46.7%20219.3L-66.0%20200.0L-46.7%20180.7L-46.7%20153.3L-19.3%20153.3Z%20M200.0%20134.0L219.3%20153.3L246.7%20153.3L246.7%20180.7L266.0%20200.0L246.7%20219.3L246.7%20246.7L219.3%20246.7L200.0%20266.0L180.7%20246.7L153.3%20246.7L153.3%20219.3L134.0%20200.0L153.3%20180.7L153.3%20153.3L180.7%20153.3Z%20M100.0%2034.0L119.3%2053.3L146.7%2053.3L146.7%2080.7L166.0%20100.0L146.7%20119.3L146.7%20146.7L119.3%20146.7L100.0%20166.0L80.7%20146.7L53.3%20146.7L53.3%20119.3L34.0%20100.0L53.3%2080.7L53.3%2053.3L80.7%2053.3Z%27%2F%3E%3Cpath%20d%3D%27M100.0%20-34L134.0%200L100.0%2034L66.0%200Z%20M100.0%20166L134.0%20200L100.0%20234L66.0%20200Z%20M0%2066.0L34%20100.0L0%20134.0L-34%20100.0Z%20M200%2066.0L234%20100.0L200%20134.0L166%20100.0Z%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size:calc(var(--s)*46) calc(var(--s)*46);
   color:var(--ink);
   font-family:var(--font-body);
   box-shadow:0 calc(var(--s)*2) calc(var(--s)*10) rgba(0,0,0,.45);
@@ -79,8 +81,8 @@ body{
 /* ---------- כותרת עליונה ---------- */
 .masthead{
   background:var(--ink);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cg fill='none' stroke='%23FCC50D' stroke-opacity='0.055' stroke-width='2'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100'/%3E%3Cpath d='M28 0L28 34L0 50M28 34L56 50'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:calc(var(--s)*26) calc(var(--s)*46.4);
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27200%27%20viewBox%3D%270%200%20200%20200%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23FCC50D%27%20stroke-opacity%3D%270.24%27%20stroke-width%3D%273.4%27%3E%3Cpath%20d%3D%27M0.0%20-66.0L19.3%20-46.7L46.7%20-46.7L46.7%20-19.3L66.0%200.0L46.7%2019.3L46.7%2046.7L19.3%2046.7L0.0%2066.0L-19.3%2046.7L-46.7%2046.7L-46.7%2019.3L-66.0%200.0L-46.7%20-19.3L-46.7%20-46.7L-19.3%20-46.7Z%20M200.0%20-66.0L219.3%20-46.7L246.7%20-46.7L246.7%20-19.3L266.0%200.0L246.7%2019.3L246.7%2046.7L219.3%2046.7L200.0%2066.0L180.7%2046.7L153.3%2046.7L153.3%2019.3L134.0%200.0L153.3%20-19.3L153.3%20-46.7L180.7%20-46.7Z%20M0.0%20134.0L19.3%20153.3L46.7%20153.3L46.7%20180.7L66.0%20200.0L46.7%20219.3L46.7%20246.7L19.3%20246.7L0.0%20266.0L-19.3%20246.7L-46.7%20246.7L-46.7%20219.3L-66.0%20200.0L-46.7%20180.7L-46.7%20153.3L-19.3%20153.3Z%20M200.0%20134.0L219.3%20153.3L246.7%20153.3L246.7%20180.7L266.0%20200.0L246.7%20219.3L246.7%20246.7L219.3%20246.7L200.0%20266.0L180.7%20246.7L153.3%20246.7L153.3%20219.3L134.0%20200.0L153.3%20180.7L153.3%20153.3L180.7%20153.3Z%20M100.0%2034.0L119.3%2053.3L146.7%2053.3L146.7%2080.7L166.0%20100.0L146.7%20119.3L146.7%20146.7L119.3%20146.7L100.0%20166.0L80.7%20146.7L53.3%20146.7L53.3%20119.3L34.0%20100.0L53.3%2080.7L53.3%2053.3L80.7%2053.3Z%27%2F%3E%3Cpath%20d%3D%27M100.0%20-34L134.0%200L100.0%2034L66.0%200Z%20M100.0%20166L134.0%20200L100.0%20234L66.0%20200Z%20M0%2066.0L34%20100.0L0%20134.0L-34%20100.0Z%20M200%2066.0L234%20100.0L200%20134.0L166%20100.0Z%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size:calc(var(--s)*34) calc(var(--s)*34);
   padding:calc(var(--s)*10) calc(var(--s)*16) calc(var(--s)*9);
   display:flex;
   align-items:center;
@@ -125,6 +127,35 @@ body{
 .title span{ display:block; }
 .title span:last-child{ color:var(--gold); }
 
+.greeting{
+  display:flex;
+  align-items:center;
+  gap:calc(var(--s)*4);
+  margin:calc(var(--s)*4.5) 0 0;
+}
+.greeting span{
+  flex:none;
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:calc(var(--s)*8);
+  line-height:1.1;
+  letter-spacing:.05em;
+  color:var(--gold);
+}
+@supports (-webkit-background-clip: text){
+  .greeting span{
+    background-image:linear-gradient(100deg,#FCC50D 0%,#F5871F 38%,#FDD34A 60%,#D9A20A 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+}
+.greeting i{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(252,197,13,.7), transparent);
+}
+
 .logo{
   width:calc(var(--s)*56);
   height:auto;
@@ -141,7 +172,10 @@ body{
 /* ---------- באנר המכירה ---------- */
 .sale{
   flex:none;
-  background:linear-gradient(90deg, var(--orange) 0%, var(--gold) 26%, var(--gold) 74%, var(--orange) 100%);
+  background-color:var(--gold);
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27200%27%20viewBox%3D%270%200%20200%20200%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23333333%27%20stroke-opacity%3D%270.16%27%20stroke-width%3D%273%27%3E%3Cpath%20d%3D%27M0.0%20-66.0L19.3%20-46.7L46.7%20-46.7L46.7%20-19.3L66.0%200.0L46.7%2019.3L46.7%2046.7L19.3%2046.7L0.0%2066.0L-19.3%2046.7L-46.7%2046.7L-46.7%2019.3L-66.0%200.0L-46.7%20-19.3L-46.7%20-46.7L-19.3%20-46.7Z%20M200.0%20-66.0L219.3%20-46.7L246.7%20-46.7L246.7%20-19.3L266.0%200.0L246.7%2019.3L246.7%2046.7L219.3%2046.7L200.0%2066.0L180.7%2046.7L153.3%2046.7L153.3%2019.3L134.0%200.0L153.3%20-19.3L153.3%20-46.7L180.7%20-46.7Z%20M0.0%20134.0L19.3%20153.3L46.7%20153.3L46.7%20180.7L66.0%20200.0L46.7%20219.3L46.7%20246.7L19.3%20246.7L0.0%20266.0L-19.3%20246.7L-46.7%20246.7L-46.7%20219.3L-66.0%20200.0L-46.7%20180.7L-46.7%20153.3L-19.3%20153.3Z%20M200.0%20134.0L219.3%20153.3L246.7%20153.3L246.7%20180.7L266.0%20200.0L246.7%20219.3L246.7%20246.7L219.3%20246.7L200.0%20266.0L180.7%20246.7L153.3%20246.7L153.3%20219.3L134.0%20200.0L153.3%20180.7L153.3%20153.3L180.7%20153.3Z%20M100.0%2034.0L119.3%2053.3L146.7%2053.3L146.7%2080.7L166.0%20100.0L146.7%20119.3L146.7%20146.7L119.3%20146.7L100.0%20166.0L80.7%20146.7L53.3%20146.7L53.3%20119.3L34.0%20100.0L53.3%2080.7L53.3%2053.3L80.7%2053.3Z%27%2F%3E%3Cpath%20d%3D%27M100.0%20-34L134.0%200L100.0%2034L66.0%200Z%20M100.0%20166L134.0%20200L100.0%20234L66.0%20200Z%20M0%2066.0L34%20100.0L0%20134.0L-34%20100.0Z%20M200%2066.0L234%20100.0L200%20134.0L166%20100.0Z%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"),
+    linear-gradient(90deg, var(--orange) 0%, var(--gold) 26%, var(--gold) 74%, var(--orange) 100%);
+  background-size:calc(var(--s)*28) calc(var(--s)*28), auto;
   color:var(--ink);
   text-align:center;
   padding:calc(var(--s)*6.5) calc(var(--s)*16) calc(var(--s)*7);
@@ -224,8 +258,8 @@ body{
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  gap:calc(var(--s)*5.5);
-  padding:calc(var(--s)*6) calc(var(--s)*14) calc(var(--s)*5);
+  gap:calc(var(--s)*5);
+  padding:calc(var(--s)*5) calc(var(--s)*14) calc(var(--s)*4);
 }
 
 .courses__row{
@@ -277,7 +311,7 @@ body{
   background:var(--paper);
   border:1px solid var(--rule);
   border-radius:calc(var(--s)*1.5);
-  padding:calc(var(--s)*7) calc(var(--s)*7) calc(var(--s)*4);
+  padding:calc(var(--s)*6.5) calc(var(--s)*7) calc(var(--s)*3.5);
 }
 
 /* ---------- פריטים ---------- */
@@ -297,7 +331,7 @@ body{
   display:flex;
   align-items:baseline;
   gap:calc(var(--s)*2.6);
-  padding-block:calc(var(--s)*0.65);
+  padding-block:calc(var(--s)*0.55);
   font-size:calc(var(--s)*3.8);
   font-weight:500;
   line-height:1.2;
@@ -318,6 +352,8 @@ body{
 
 .footer__main{
   background:var(--ink);
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27200%27%20viewBox%3D%270%200%20200%20200%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23FCC50D%27%20stroke-opacity%3D%270.22%27%20stroke-width%3D%273.2%27%3E%3Cpath%20d%3D%27M0.0%20-66.0L19.3%20-46.7L46.7%20-46.7L46.7%20-19.3L66.0%200.0L46.7%2019.3L46.7%2046.7L19.3%2046.7L0.0%2066.0L-19.3%2046.7L-46.7%2046.7L-46.7%2019.3L-66.0%200.0L-46.7%20-19.3L-46.7%20-46.7L-19.3%20-46.7Z%20M200.0%20-66.0L219.3%20-46.7L246.7%20-46.7L246.7%20-19.3L266.0%200.0L246.7%2019.3L246.7%2046.7L219.3%2046.7L200.0%2066.0L180.7%2046.7L153.3%2046.7L153.3%2019.3L134.0%200.0L153.3%20-19.3L153.3%20-46.7L180.7%20-46.7Z%20M0.0%20134.0L19.3%20153.3L46.7%20153.3L46.7%20180.7L66.0%20200.0L46.7%20219.3L46.7%20246.7L19.3%20246.7L0.0%20266.0L-19.3%20246.7L-46.7%20246.7L-46.7%20219.3L-66.0%20200.0L-46.7%20180.7L-46.7%20153.3L-19.3%20153.3Z%20M200.0%20134.0L219.3%20153.3L246.7%20153.3L246.7%20180.7L266.0%20200.0L246.7%20219.3L246.7%20246.7L219.3%20246.7L200.0%20266.0L180.7%20246.7L153.3%20246.7L153.3%20219.3L134.0%20200.0L153.3%20180.7L153.3%20153.3L180.7%20153.3Z%20M100.0%2034.0L119.3%2053.3L146.7%2053.3L146.7%2080.7L166.0%20100.0L146.7%20119.3L146.7%20146.7L119.3%20146.7L100.0%20166.0L80.7%20146.7L53.3%20146.7L53.3%20119.3L34.0%20100.0L53.3%2080.7L53.3%2053.3L80.7%2053.3Z%27%2F%3E%3Cpath%20d%3D%27M100.0%20-34L134.0%200L100.0%2034L66.0%200Z%20M100.0%20166L134.0%20200L100.0%20234L66.0%20200Z%20M0%2066.0L34%20100.0L0%20134.0L-34%20100.0Z%20M200%2066.0L234%20100.0L200%20134.0L166%20100.0Z%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size:calc(var(--s)*34) calc(var(--s)*34);
   padding:calc(var(--s)*8) calc(var(--s)*16) calc(var(--s)*7);
   text-align:center;
 }
@@ -438,7 +474,7 @@ body{
   .actions{ display:none; }
   .sheet-wrap{ width:297mm; }
   .sheet{ --s:1mm; box-shadow:none; height:297mm; }
-  .sheet, .masthead, .course__tab, .footer__main, .footer__meta, .brandbar, .course__panel{
+  .sheet, .masthead, .greeting span, .sale, .footer__main, .course__tab, .footer__main, .footer__meta, .brandbar, .course__panel{
     -webkit-print-color-adjust:exact;
     print-color-adjust:exact;
   }
@@ -460,6 +496,7 @@ body{
             מסעדת אלגריה
           </p>
           <h1 class="title"><span>תפריט</span><span>ראש השנה</span></h1>
+          <p class="greeting"><i aria-hidden="true"></i><span>שנה טובה ומתוקה</span><i aria-hidden="true"></i></p>
         </div>
         <img class="logo" src="assets/alegria-logo-web.png" alt="מסעדת אלגריה — אוכל ביתי טעים, טרי ואיכותי">
       </header>

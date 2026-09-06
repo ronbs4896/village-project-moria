@@ -20,6 +20,23 @@ DIST.mkdir(exist_ok=True)
 LOGO = ROOT / "assets" / "alegria-logo-web.png"
 LOGO_URI = "data:image/png;base64," + base64.b64encode(LOGO.read_bytes()).decode()
 
+def render_simanim():
+    """בונה את רצועת סימני ראש השנה מתוך src/simanim.py."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("simanim", ROOT / "src" / "simanim.py")
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    cells = "\n".join(
+        f'          <li class="siman">'
+        f'<svg viewBox="0 0 48 48" aria-hidden="true">{path}</svg>'
+        f'<span>{name}</span></li>'
+        for name, path in mod.SIMANIM)
+    return (
+        '      <section class="simanim">\n'
+        '        <h2 class="simanim__head">סימני ראש השנה <em>· לשנה טובה ומתוקה</em></h2>\n'
+        '        <ul class="simanim__row">\n' + cells + '\n        </ul>\n'
+        '      </section>')
+
+
 FONT_DIR = ROOT / "assets" / "fonts"
 # משקל -> מילת המפתח שמזהה את הקובץ בשם שעומר צופי מספק
 WEIGHT_KEYS = {
@@ -89,6 +106,7 @@ def embed_fonts(html):
 
 fragment = SRC.read_text(encoding="utf-8")
 inlined = fragment.replace('src="assets/alegria-logo-web.png"', f'src="{LOGO_URI}"')
+inlined = inlined.replace("<!--SIMANIM-->", render_simanim())
 print("פונטים:")
 inlined = embed_fonts(inlined)
 
@@ -121,11 +139,14 @@ if "--render" in sys.argv:
         pg = b.new_page()
         pg.goto(url, wait_until="networkidle")
         pg.emulate_media(media="print")
-        pg.pdf(path=str(pdf_out), format="A4", print_background=True,
-               margin={"top": "0", "right": "0", "bottom": "0", "left": "0"})
+        for fmt, out in (("A3", pdf_out), ("A4", pdf_out.with_name(pdf_out.stem + "-a4.pdf"))):
+            pg.pdf(path=str(out), format=fmt, print_background=True,
+                   margin={"top": "0", "right": "0", "bottom": "0", "left": "0"},
+                   prefer_css_page_size=(fmt == "A3"))
+            print("  rendered", out.name)
         pg.close()
         # PNG — הגיליון בלבד, ברזולוציה גבוהה
-        pg = b.new_page(viewport={"width": 794, "height": 1123}, device_scale_factor=3)
+        pg = b.new_page(viewport={"width": 1123, "height": 1587}, device_scale_factor=2)
         pg.goto(url, wait_until="networkidle")
         pg.locator(".sheet").screenshot(path=str(png_out))
         pg.close()

@@ -20,8 +20,77 @@ DIST.mkdir(exist_ok=True)
 LOGO = ROOT / "assets" / "alegria-logo-web.png"
 LOGO_URI = "data:image/png;base64," + base64.b64encode(LOGO.read_bytes()).decode()
 
+FONT_DIR = ROOT / "assets" / "fonts"
+# משקל -> מילת המפתח שמזהה את הקובץ בשם שעומר צופי מספק
+WEIGHT_KEYS = {
+    "Light": ("light",),
+    "Regular": ("regular", "book"),
+    "Medium": ("medium",),
+    "Bold": ("bold",),
+    "Black": ("black", "heavy"),
+}
+FONT_EXT = (".woff2", ".woff", ".ttf", ".otf")
+MIME = {".woff2": "font/woff2", ".woff": "font/woff", ".ttf": "font/ttf", ".otf": "font/otf"}
+FMT = {".woff2": "woff2", ".woff": "woff", ".ttf": "truetype", ".otf": "opentype"}
+
+
+def _to_woff2(path):
+    """ממיר ttf/otf ל-woff2 אם fonttools זמין. מחזיר (bytes, סיומת)."""
+    if path.suffix.lower() == ".woff2":
+        return path.read_bytes(), ".woff2"
+    try:
+        from fontTools.ttLib import TTFont
+        import io
+        f = TTFont(str(path))
+        f.flavor = "woff2"
+        buf = io.BytesIO()
+        f.save(buf)
+        return buf.getvalue(), ".woff2"
+    except Exception as e:
+        print(f"  ! לא הומר ל-woff2 ({path.name}): {e}")
+        return path.read_bytes(), path.suffix.lower()
+
+
+def find_font(weight_name):
+    """מאתר את קובץ הפונט למשקל נתון, ללא תלות בשם המדויק שהגיע מהמעצב."""
+    if not FONT_DIR.is_dir():
+        return None
+    keys = WEIGHT_KEYS[weight_name]
+    cands = [f for f in FONT_DIR.iterdir()
+             if f.suffix.lower() in FONT_EXT and any(k in f.stem.lower() for k in keys)]
+    if not cands:
+        return None
+    # woff2 עדיף, ואחריו הקובץ הקטן ביותר
+    cands.sort(key=lambda f: (f.suffix.lower() != ".woff2", f.stat().st_size))
+    return cands[0]
+
+
+def embed_fonts(html):
+    """מטמיע את קבצי ברזיה כ-base64, או מסיר את בלוק ה-@font-face אם אין קבצים."""
+    found = 0
+    for weight in WEIGHT_KEYS:
+        src = find_font(weight)
+        placeholder = f'url("assets/fonts/Birzia-{weight}.woff2") format("woff2")'
+        if src is None:
+            continue
+        data, ext = _to_woff2(src)
+        uri = f"data:{MIME[ext]};base64," + base64.b64encode(data).decode()
+        html = html.replace(placeholder, f'url("{uri}") format("{FMT[ext]}")')
+        print(f"  ✓ {weight:<8} {src.name}  ({len(data)//1024} KB)")
+        found += 1
+    if found == 0:
+        start = html.find('<style id="birzia-faces">')
+        end = html.find("</style>", start)
+        if start != -1 and end != -1:
+            html = html[:start] + html[end + len("</style>") :].lstrip("\n")
+        print("  – ברזיה לא נמצא ב-assets/fonts/ — נופל חזרה ל-Rubik/Assistant")
+    return html
+
+
 fragment = SRC.read_text(encoding="utf-8")
 inlined = fragment.replace('src="assets/alegria-logo-web.png"', f'src="{LOGO_URI}"')
+print("פונטים:")
+inlined = embed_fonts(inlined)
 
 # 1. פרגמנט ל-Artifact (לוגו מוטמע, ללא עטיפת html/head/body)
 (DIST / "artifact.html").write_text(inlined, encoding="utf-8")

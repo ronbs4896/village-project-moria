@@ -4,6 +4,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Assistant:wght@400;500;600;700&display=swap">
 
+<style id="birzia-faces">
+/* ברזיה — עומר צופי. הקבצים נטענים מ-assets/fonts/ ומוטמעים ע"י build.py.
+   אם הם חסרים, הדפדפן נופל חזרה ל-Rubik/Assistant בלי לשבור כלום. */
+@font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Light.woff2") format("woff2");   font-weight:300;     font-style:normal; font-display:swap; }
+@font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Regular.woff2") format("woff2"); font-weight:400;     font-style:normal; font-display:swap; }
+@font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Medium.woff2") format("woff2");  font-weight:500;     font-style:normal; font-display:swap; }
+@font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Bold.woff2") format("woff2");    font-weight:600 700; font-style:normal; font-display:swap; }
+@font-face{ font-family:'Birzia'; src:url("assets/fonts/Birzia-Black.woff2") format("woff2");   font-weight:800 900; font-style:normal; font-display:swap; }
+</style>
+
 <style>
 /* ============================================================
    מסעדת אלגריה — תפריט ראש השנה
@@ -24,8 +34,8 @@
   --ink-soft:  #6E6357;  /* חום-אפור חם לטקסט משני */
   --rule:      #D9CBB6;  /* קו שיער */
 
-  --font-display: 'Rubik', 'Fb IguanaNew', 'Heebo', system-ui, sans-serif;
-  --font-body:    'Assistant', 'Fb IguanaNew', 'Heebo', system-ui, sans-serif;
+  --font-display: 'Birzia', 'Fb IguanaNew', 'Rubik', 'Heebo', system-ui, sans-serif;
+  --font-body:    'Birzia', 'Fb IguanaNew', 'Assistant', 'Heebo', system-ui, sans-serif;
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
